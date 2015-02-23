@@ -14,6 +14,7 @@
 		55154C951A9BAD420083141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55154C941A9BAD420083141C /* Images.xcassets */; };
 		55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55154C961A9BAD420083141C /* LaunchScreen.xib */; };
 		55154CA41A9BAD420083141C /* exquisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CA31A9BAD420083141C /* exquisiteTests.m */; };
+		64924D131A9BB086008E3C93 /* devNotes in Resources */ = {isa = PBXBuildFile; fileRef = 64924D121A9BB086008E3C93 /* devNotes */; };
 		55154CAF1A9BD7190083141C /* WriteSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */; };
 		55154CB21A9BD7510083141C /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB11A9BD7510083141C /* TimeLineViewController.m */; };
 		55154CB51A9BD76B0083141C /* BrowseStorysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB41A9BD76B0083141C /* BrowseStorysViewController.m */; };
@@ -43,6 +44,7 @@
 		55154C9D1A9BAD420083141C /* exquisiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exquisiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55154CA21A9BAD420083141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55154CA31A9BAD420083141C /* exquisiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exquisiteTests.m; sourceTree = "<group>"; };
+		64924D121A9BB086008E3C93 /* devNotes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = devNotes; sourceTree = "<group>"; };
 		55154CAD1A9BD7190083141C /* WriteSegmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteSegmentViewController.h; sourceTree = "<group>"; };
 		55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteSegmentViewController.m; sourceTree = "<group>"; };
 		55154CB01A9BD7510083141C /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
