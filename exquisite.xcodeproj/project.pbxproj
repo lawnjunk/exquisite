@@ -10,11 +10,14 @@
 		55154C871A9BAD420083141C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154C861A9BAD420083141C /* main.m */; };
 		55154C8A1A9BAD420083141C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154C891A9BAD420083141C /* AppDelegate.m */; };
 		55154C8D1A9BAD420083141C /* exquisite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55154C8B1A9BAD420083141C /* exquisite.xcdatamodeld */; };
-		55154C901A9BAD420083141C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154C8F1A9BAD420083141C /* ViewController.m */; };
 		55154C931A9BAD420083141C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55154C911A9BAD420083141C /* Main.storyboard */; };
 		55154C951A9BAD420083141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55154C941A9BAD420083141C /* Images.xcassets */; };
 		55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55154C961A9BAD420083141C /* LaunchScreen.xib */; };
 		55154CA41A9BAD420083141C /* exquisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CA31A9BAD420083141C /* exquisiteTests.m */; };
+		55154CAF1A9BD7190083141C /* WriteSegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */; };
+		55154CB21A9BD7510083141C /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB11A9BD7510083141C /* TimeLineViewController.m */; };
+		55154CB51A9BD76B0083141C /* BrowseStorysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB41A9BD76B0083141C /* BrowseStorysViewController.m */; };
+		55154CB81A9BD7880083141C /* ReadStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB71A9BD7880083141C /* ReadStoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +37,20 @@
 		55154C881A9BAD420083141C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		55154C891A9BAD420083141C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		55154C8C1A9BAD420083141C /* exquisite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = exquisite.xcdatamodel; sourceTree = "<group>"; };
-		55154C8E1A9BAD420083141C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		55154C8F1A9BAD420083141C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		55154C921A9BAD420083141C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55154C941A9BAD420083141C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55154C971A9BAD420083141C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		55154C9D1A9BAD420083141C /* exquisiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exquisiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55154CA21A9BAD420083141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55154CA31A9BAD420083141C /* exquisiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exquisiteTests.m; sourceTree = "<group>"; };
+		55154CAD1A9BD7190083141C /* WriteSegmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteSegmentViewController.h; sourceTree = "<group>"; };
+		55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteSegmentViewController.m; sourceTree = "<group>"; };
+		55154CB01A9BD7510083141C /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
+		55154CB11A9BD7510083141C /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
+		55154CB31A9BD76B0083141C /* BrowseStorysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseStorysViewController.h; sourceTree = "<group>"; };
+		55154CB41A9BD76B0083141C /* BrowseStorysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseStorysViewController.m; sourceTree = "<group>"; };
+		55154CB61A9BD7880083141C /* ReadStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadStoryViewController.h; sourceTree = "<group>"; };
+		55154CB71A9BD7880083141C /* ReadStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadStoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +94,15 @@
 			children = (
 				55154C881A9BAD420083141C /* AppDelegate.h */,
 				55154C891A9BAD420083141C /* AppDelegate.m */,
-				55154C8E1A9BAD420083141C /* ViewController.h */,
-				55154C8F1A9BAD420083141C /* ViewController.m */,
 				55154C911A9BAD420083141C /* Main.storyboard */,
+				55154CAD1A9BD7190083141C /* WriteSegmentViewController.h */,
+				55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */,
+				55154CB01A9BD7510083141C /* TimeLineViewController.h */,
+				55154CB11A9BD7510083141C /* TimeLineViewController.m */,
+				55154CB31A9BD76B0083141C /* BrowseStorysViewController.h */,
+				55154CB41A9BD76B0083141C /* BrowseStorysViewController.m */,
+				55154CB61A9BD7880083141C /* ReadStoryViewController.h */,
+				55154CB71A9BD7880083141C /* ReadStoryViewController.m */,
 				55154C941A9BAD420083141C /* Images.xcassets */,
 				55154C961A9BAD420083141C /* LaunchScreen.xib */,
 				55154C8B1A9BAD420083141C /* exquisite.xcdatamodeld */,
@@ -222,9 +237,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55154CB81A9BD7880083141C /* ReadStoryViewController.m in Sources */,
+				55154CAF1A9BD7190083141C /* WriteSegmentViewController.m in Sources */,
+				55154CB51A9BD76B0083141C /* BrowseStorysViewController.m in Sources */,
+				55154CB21A9BD7510083141C /* TimeLineViewController.m in Sources */,
 				55154C8D1A9BAD420083141C /* exquisite.xcdatamodeld in Sources */,
 				55154C8A1A9BAD420083141C /* AppDelegate.m in Sources */,
-				55154C901A9BAD420083141C /* ViewController.m in Sources */,
 				55154C871A9BAD420083141C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
