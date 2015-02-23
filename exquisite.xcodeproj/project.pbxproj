@@ -15,6 +15,7 @@
 		55154C951A9BAD420083141C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55154C941A9BAD420083141C /* Images.xcassets */; };
 		55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55154C961A9BAD420083141C /* LaunchScreen.xib */; };
 		55154CA41A9BAD420083141C /* exquisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CA31A9BAD420083141C /* exquisiteTests.m */; };
+		64924D131A9BB086008E3C93 /* devNotes in Resources */ = {isa = PBXBuildFile; fileRef = 64924D121A9BB086008E3C93 /* devNotes */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		55154C9D1A9BAD420083141C /* exquisiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exquisiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55154CA21A9BAD420083141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55154CA31A9BAD420083141C /* exquisiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = exquisiteTests.m; sourceTree = "<group>"; };
+		64924D121A9BB086008E3C93 /* devNotes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = devNotes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		55154C781A9BAD420083141C = {
 			isa = PBXGroup;
 			children = (
+				64924D121A9BB086008E3C93 /* devNotes */,
 				55154C831A9BAD420083141C /* exquisite */,
 				55154CA01A9BAD420083141C /* exquisiteTests */,
 				55154C821A9BAD420083141C /* Products */,
@@ -202,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64924D131A9BB086008E3C93 /* devNotes in Resources */,
 				55154C931A9BAD420083141C /* Main.storyboard in Resources */,
 				55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */,
 				55154C951A9BAD420083141C /* Images.xcassets in Resources */,
@@ -418,6 +422,7 @@
 				55154CA91A9BAD420083141C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55154CAA1A9BAD420083141C /* Build configuration list for PBXNativeTarget "exquisiteTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +431,7 @@
 				55154CAC1A9BAD420083141C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
