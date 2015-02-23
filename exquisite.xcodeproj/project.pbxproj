@@ -74,6 +74,7 @@
 		55154C781A9BAD420083141C = {
 			isa = PBXGroup;
 			children = (
+				64924D121A9BB086008E3C93 /* devNotes */,
 				55154C831A9BAD420083141C /* exquisite */,
 				55154CA01A9BAD420083141C /* exquisiteTests */,
 				55154C821A9BAD420083141C /* Products */,
@@ -217,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64924D131A9BB086008E3C93 /* devNotes in Resources */,
 				55154C931A9BAD420083141C /* Main.storyboard in Resources */,
 				55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */,
 				55154C951A9BAD420083141C /* Images.xcassets in Resources */,
@@ -436,6 +438,7 @@
 				55154CA91A9BAD420083141C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55154CAA1A9BAD420083141C /* Build configuration list for PBXNativeTarget "exquisiteTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +447,7 @@
 				55154CAC1A9BAD420083141C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
