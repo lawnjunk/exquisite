@@ -1,0 +1,102 @@
+ [
+  {
+  "StoryID" : 23432,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 1,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 23432,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 2,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 23432,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 3,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 35245,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 4,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 52345,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 5,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 243523,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 6,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 5234523,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 7,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 524352,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 8,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 234523,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 9,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  },
+  {
+  "StoryID" : 54323452,
+  "createdAT" : "some date",
+  "firstSegment" : {
+  "segmentID": 10,
+  "text" : "i am not feeling very creative today.",
+  "user" : "@nacnud",
+  "createdAt" : "this segment was created at somedate"
+  }
+  }
+  ]
