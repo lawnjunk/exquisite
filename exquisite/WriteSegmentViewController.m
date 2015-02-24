@@ -9,9 +9,10 @@
 #import "WriteSegmentViewController.h"
 #import "NetworkController.h"
 
-@interface WriteSegmentViewController ()
+@interface WriteSegmentViewController () <UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NetworkController *networkController;
+
 
 @end
 
@@ -35,7 +36,29 @@
         NSLog(@"whatttt the fuuuuuuk are we dooing");
     }];
 
+    
+    
+//    
+//    
+//    NSString *testButton =  @"this is a test";
+//    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:testButton];
+//    NSURL *myURL = [NSURL URLWithString:@"1"];
+//    NSRange testRange = [testButton rangeOfString:@"is a"];
+//    NSRange rangeOfTest = [testButton rangeOfString:@"test"  ];
+//    [str addAttribute: value:myURL range:testRange];
+//
+//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangeOfTest];
+//    
+//    self.testTextView.attributedText = str;
+//    self.testTextView.delegate = self;
+//    self.testTextView.editable = false;
+//    yourTextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+//
+//    self.testTextView.dataDetectorTypes = UIDataDetectorTypeLink ;
+//    [self.testTextView setSelectedRange:testRange];
+    
   
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,5 +70,9 @@
 -(BOOL)prefersStatusBarHidden {
     return true;
 }
+
+
+
+
 
 @end
