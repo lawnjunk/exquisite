@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Time Line View Controller-->
@@ -16,12 +17,50 @@
                     <view key="view" contentMode="scaleToFill" id="xv7-6C-PfE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4K-Ee-2ZY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Az-Gl-1of">
+                                        <rect key="frame" x="250" y="67" width="100" height="100"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dmk-9k-lvw" userLabel="Header">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="112"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBx-rT-Bp8">
+                                        <rect key="frame" x="8" y="116" width="584" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="XHw-9s-bFr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dmk-9k-lvw" firstAttribute="top" secondItem="xv7-6C-PfE" secondAttribute="topMargin" id="34m-WF-x4v"/>
+                            <constraint firstItem="8Bs-XV-twy" firstAttribute="top" secondItem="e4K-Ee-2ZY" secondAttribute="bottom" id="3rW-Cj-Cgd"/>
+                            <constraint firstItem="e4K-Ee-2ZY" firstAttribute="leading" secondItem="xv7-6C-PfE" secondAttribute="leadingMargin" constant="-16" id="DIo-TI-Cx7"/>
+                            <constraint firstItem="e4K-Ee-2ZY" firstAttribute="leading" secondItem="xv7-6C-PfE" secondAttribute="leadingMargin" constant="-16" id="OBa-zM-eWG"/>
+                            <constraint firstItem="e4K-Ee-2ZY" firstAttribute="top" secondItem="xv7-6C-PfE" secondAttribute="topMargin" id="QlH-Xg-PTL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e4K-Ee-2ZY" secondAttribute="trailing" constant="-16" id="Zoq-qC-dqe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dmk-9k-lvw" secondAttribute="trailing" constant="-16" id="ax8-u6-h5k"/>
+                            <constraint firstItem="Dmk-9k-lvw" firstAttribute="leading" secondItem="xv7-6C-PfE" secondAttribute="leadingMargin" constant="-16" id="cjn-dL-wZt"/>
+                            <constraint firstItem="e4K-Ee-2ZY" firstAttribute="top" secondItem="xv7-6C-PfE" secondAttribute="topMargin" id="dCy-0P-CqT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e4K-Ee-2ZY" secondAttribute="trailing" constant="-16" id="dhy-LQ-5aw"/>
+                            <constraint firstItem="8Bs-XV-twy" firstAttribute="top" secondItem="e4K-Ee-2ZY" secondAttribute="bottom" id="tMl-og-Nrq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLu-4i-XwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-704" y="668"/>
+            <point key="canvasLocation" x="-718" y="667"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="y42-sW-e01">
@@ -98,28 +137,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEB-CW-i8G">
-                                <rect key="frame" x="0.0" y="-119" width="600" height="241"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="241" id="yb6-kF-nC5"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UPe-dw-qoB">
-                                <rect key="frame" x="180" y="130" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnW-GX-MsP">
+                                <rect key="frame" x="73" y="155" width="132" height="30"/>
+                                <state key="normal" title="gotoReadStoryTest">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8uf-8L-XdP" kind="presentation" id="vQm-Cf-0Wy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LEB-CW-i8G" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-119" id="AuC-J7-aUH"/>
-                            <constraint firstItem="LEB-CW-i8G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wuy-Tp-usD"/>
+                            <constraint firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-119" id="AuC-J7-aUH"/>
+                            <constraint firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wuy-Tp-usD"/>
                         </constraints>
                     </view>
                 </viewController>
