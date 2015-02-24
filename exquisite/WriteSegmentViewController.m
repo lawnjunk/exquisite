@@ -12,7 +12,7 @@
 @interface WriteSegmentViewController () <UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NetworkController *networkController;
-
+@property (strong,nonatomic) Story
 
 @end
 

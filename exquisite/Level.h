@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Level : NSObject
-
-@property(strong, nonatomic) NSArray *segments;
-
+@property(strong, nonatomic) NSMutableArray *segments;
+-(instancetype)initWithArray:(NSArray *) levelArray;
 @end

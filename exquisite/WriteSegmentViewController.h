@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Story.h"
 @interface WriteSegmentViewController : UIViewController
 
 @end

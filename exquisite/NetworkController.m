@@ -43,8 +43,9 @@
         NSLog(@"there was an error parsing the json story dictionary");
     } else {
         NSLog(storyDictionary.description);
-      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
-      
+//      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
+
+        completionHandler(storyDictionary, nil);
     }
     
 }

@@ -9,5 +9,13 @@
 #import "Segment.h"
 
 @implementation Segment
+-(instancetype)initWithDictionary:(NSDictionary *) segDictionary {
+    self = [super init];
+    
+    self.text = segDictionary[@"text"];
+    self.segmentID = 0;
+    self.createdAt = segDictionary[@"createdAt"];
 
+    return self;
+}
 @end

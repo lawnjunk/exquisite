@@ -13,14 +13,13 @@
 
 -(instancetype)initWithJSONData:(NSDictionary *)jsonDataDictionary{
   self = [super init];
-  
   self.storyID = jsonDataDictionary[@"storyID"];
   self.title = jsonDataDictionary[@"title"];
-  
-#warning fix date issue
-//  self.createdAt = jsonDataDictionary[@"createdAt"];
-  
   self.levels = jsonDataDictionary[@"levels"];
+  #warning fix date issue
+  //  self.createdAt = jsonDataDictionary[@"createdAt"];
+  
+
   
   NSLog(@"This story has %lu Levels.",(unsigned long)self.levels.count);
 
