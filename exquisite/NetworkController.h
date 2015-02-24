@@ -12,4 +12,8 @@
 
 +(id)sharedService;
 
+-(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd;
+
+-(void)fetchStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
+
 @end
