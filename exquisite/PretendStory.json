@@ -1,0 +1,94 @@
+{
+    "storyID" : 666,
+    "createdAt" : "some date goes here",
+    "levels" : [
+                [
+                 {
+                 "segmentID" : 0,
+                 "text" : "lala i was going to write a better story but.. :(",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 }
+                 ],
+                [
+                 {
+                 "segmentID" : 2,
+                 "text" : "i am not feeling very creative today.",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 3,
+                 "text" : "i have not had a very interesting day",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 4,
+                 "text" : "my story is told better, simple and true",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 }
+                 ],
+                [
+                 {
+                 "segmentID" : 5,
+                 "text" : "you see its hard to get in the flow, on a hungry stomach",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 6,
+                 "text" : "yesterday, on the otherhand was a wild and marvelous adventure",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 7,
+                 "text" : "it was the sumer of 1997, and @duhHaker was working on a irc trolling bot",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 }
+                 ],
+                [
+                 {
+                 "segmentID" : 8,
+                 "text" : "my krew left town for a day of hiking, but a wrong turn took us to an unexpected nowhere land",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 9,
+                 "text" : "gurrgling, burrbling, fiercly churing; stomach groans",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 10,
+                 "text" : "@fortLoco was in a thread called hash lulwat, and swaw a swarm of ascii #(&*^#$(*&^$#)*",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 }
+                 ],
+                [
+                 {
+                 "segmentID" : 11,
+                 "text" : "what we found was... honest to god, undescribable. but it reaallly was something",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 12,
+                 "text" : "thats it i cant not, I know i shouldnt, yet i must. I am going to eat my roomates keish",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 },
+                 {
+                 "segmentID" : 13,
+                 "text" : "i think this story is probs a bust",
+                 "user" : "@nacnud",
+                 "createdAt" : "this segment was created at somedate"
+                 }
+                 ]
+                ]
+}

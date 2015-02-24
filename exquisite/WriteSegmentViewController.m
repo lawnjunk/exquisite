@@ -7,8 +7,11 @@
 //
 
 #import "WriteSegmentViewController.h"
+#import "NetworkController.h"
 
 @interface WriteSegmentViewController ()
+
+@property (strong,nonatomic) NetworkController *networkController;
 
 @end
 
@@ -16,8 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-  
+    
+    self.networkController = [NetworkController sharedService];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefaults stringForKey:@"token"];
+    if (!token) {
+        #warning we shut be presenting modal a login controller
+        NSLog(@"there was no token");
+        
+        [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
+    }
+    
+    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
+        NSLog(@"whatttt the fuuuuuuk are we dooing");
+    }];
 
   
 }
