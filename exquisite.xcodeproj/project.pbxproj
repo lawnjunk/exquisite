@@ -20,7 +20,8 @@
 		55154CB81A9BD7880083141C /* ReadStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB71A9BD7880083141C /* ReadStoryViewController.m */; };
 		55154CBB1A9C0C990083141C /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CBA1A9C0C990083141C /* NetworkController.m */; };
 		55154CBD1A9C0CF10083141C /* PretendStory.json in Resources */ = {isa = PBXBuildFile; fileRef = 55154CBC1A9C0CF10083141C /* PretendStory.json */; };
-		55154CBF1A9C1B3F0083141C /* PretendProfile.json in Resources */ = {isa = PBXBuildFile; fileRef = 55154CBE1A9C1B3F0083141C /* PretendProfile.json */; };
+		55C790761A9CF326002567A3 /* PretendProfile.json in Resources */ = {isa = PBXBuildFile; fileRef = 55C790751A9CF326002567A3 /* PretendProfile.json */; };
+		55C7907A1A9CF36C002567A3 /* PretendStoryBrowers.json in Resources */ = {isa = PBXBuildFile; fileRef = 55C790791A9CF36C002567A3 /* PretendStoryBrowers.json */; };
 		644CBF6E1A9C079800CE9FF6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF6D1A9C079700CE9FF6 /* User.m */; };
 		644CBF741A9C07B500CE9FF6 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF731A9C07B500CE9FF6 /* Story.m */; };
 		644CBF771A9C087300CE9FF6 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF761A9C087300CE9FF6 /* Level.m */; };
@@ -62,7 +63,8 @@
 		55154CB91A9C0C990083141C /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
 		55154CBA1A9C0C990083141C /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 		55154CBC1A9C0CF10083141C /* PretendStory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PretendStory.json; sourceTree = "<group>"; };
-		55154CBE1A9C1B3F0083141C /* PretendProfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PretendProfile.json; sourceTree = "<group>"; };
+		55C790751A9CF326002567A3 /* PretendProfile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PretendProfile.json; sourceTree = "<group>"; };
+		55C790791A9CF36C002567A3 /* PretendStoryBrowers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PretendStoryBrowers.json; sourceTree = "<group>"; };
 		644CBF6C1A9C079700CE9FF6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		644CBF6D1A9C079700CE9FF6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		644CBF721A9C07B500CE9FF6 /* Story.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Story.h; sourceTree = "<group>"; };
@@ -128,6 +130,8 @@
 				55154CB91A9C0C990083141C /* NetworkController.h */,
 				55154CBA1A9C0C990083141C /* NetworkController.m */,
 				55154CBC1A9C0CF10083141C /* PretendStory.json */,
+				55C790791A9CF36C002567A3 /* PretendStoryBrowers.json */,
+				55C790751A9CF326002567A3 /* PretendProfile.json */,
 				55154CAD1A9BD7190083141C /* WriteSegmentViewController.h */,
 				55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */,
 				55154CB01A9BD7510083141C /* TimeLineViewController.h */,
@@ -140,7 +144,6 @@
 				55154C961A9BAD420083141C /* LaunchScreen.xib */,
 				55154C8B1A9BAD420083141C /* exquisite.xcdatamodeld */,
 				55154C841A9BAD420083141C /* Supporting Files */,
-				55154CBE1A9C1B3F0083141C /* PretendProfile.json */,
 			);
 			path = exquisite;
 			sourceTree = "<group>";
@@ -251,11 +254,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C7907A1A9CF36C002567A3 /* PretendStoryBrowers.json in Resources */,
 				55154CBD1A9C0CF10083141C /* PretendStory.json in Resources */,
 				64924D131A9BB086008E3C93 /* devNotes in Resources */,
+				55C790761A9CF326002567A3 /* PretendProfile.json in Resources */,
 				55154C931A9BAD420083141C /* Main.storyboard in Resources */,
 				55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */,
-				55154CBF1A9C1B3F0083141C /* PretendProfile.json in Resources */,
 				55154C951A9BAD420083141C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
