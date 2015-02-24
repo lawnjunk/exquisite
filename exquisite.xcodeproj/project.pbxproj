@@ -18,6 +18,8 @@
 		55154CB21A9BD7510083141C /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB11A9BD7510083141C /* TimeLineViewController.m */; };
 		55154CB51A9BD76B0083141C /* BrowseStorysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB41A9BD76B0083141C /* BrowseStorysViewController.m */; };
 		55154CB81A9BD7880083141C /* ReadStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CB71A9BD7880083141C /* ReadStoryViewController.m */; };
+		55154CBB1A9C0C990083141C /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55154CBA1A9C0C990083141C /* NetworkController.m */; };
+		55154CBD1A9C0CF10083141C /* PretendStory.json in Resources */ = {isa = PBXBuildFile; fileRef = 55154CBC1A9C0CF10083141C /* PretendStory.json */; };
 		644CBF6E1A9C079800CE9FF6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF6D1A9C079700CE9FF6 /* User.m */; };
 		644CBF741A9C07B500CE9FF6 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF731A9C07B500CE9FF6 /* Story.m */; };
 		644CBF771A9C087300CE9FF6 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF761A9C087300CE9FF6 /* Level.m */; };
@@ -56,6 +58,9 @@
 		55154CB41A9BD76B0083141C /* BrowseStorysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseStorysViewController.m; sourceTree = "<group>"; };
 		55154CB61A9BD7880083141C /* ReadStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadStoryViewController.h; sourceTree = "<group>"; };
 		55154CB71A9BD7880083141C /* ReadStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadStoryViewController.m; sourceTree = "<group>"; };
+		55154CB91A9C0C990083141C /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		55154CBA1A9C0C990083141C /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
+		55154CBC1A9C0CF10083141C /* PretendStory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PretendStory.json; sourceTree = "<group>"; };
 		644CBF6C1A9C079700CE9FF6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		644CBF6D1A9C079700CE9FF6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		644CBF721A9C07B500CE9FF6 /* Story.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Story.h; sourceTree = "<group>"; };
@@ -118,6 +123,9 @@
 				644CBF7B1A9C098E00CE9FF6 /* Segment.h */,
 				644CBF7C1A9C098E00CE9FF6 /* Segment.m */,
 				644CBF731A9C07B500CE9FF6 /* Story.m */,
+				55154CB91A9C0C990083141C /* NetworkController.h */,
+				55154CBA1A9C0C990083141C /* NetworkController.m */,
+				55154CBC1A9C0CF10083141C /* PretendStory.json */,
 				55154CAD1A9BD7190083141C /* WriteSegmentViewController.h */,
 				55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */,
 				55154CB01A9BD7510083141C /* TimeLineViewController.h */,
@@ -240,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55154CBD1A9C0CF10083141C /* PretendStory.json in Resources */,
 				64924D131A9BB086008E3C93 /* devNotes in Resources */,
 				55154C931A9BAD420083141C /* Main.storyboard in Resources */,
 				55154C981A9BAD420083141C /* LaunchScreen.xib in Resources */,
@@ -265,6 +274,7 @@
 				644CBF771A9C087300CE9FF6 /* Level.m in Sources */,
 				55154CB81A9BD7880083141C /* ReadStoryViewController.m in Sources */,
 				55154CAF1A9BD7190083141C /* WriteSegmentViewController.m in Sources */,
+				55154CBB1A9C0C990083141C /* NetworkController.m in Sources */,
 				644CBF741A9C07B500CE9FF6 /* Story.m in Sources */,
 				55154CB51A9BD76B0083141C /* BrowseStorysViewController.m in Sources */,
 				644CBF7D1A9C098E00CE9FF6 /* Segment.m in Sources */,
