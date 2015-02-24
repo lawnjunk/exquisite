@@ -7,6 +7,7 @@
 //
 
 #import "NetworkController.h"
+#import "Story.h"
 
 @implementation NetworkController
 
@@ -42,8 +43,9 @@
         NSLog(@"there was an error parsing the json story dictionary");
     } else {
         NSLog(storyDictionary.description);
+      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
+      
     }
-    
     
 }
 

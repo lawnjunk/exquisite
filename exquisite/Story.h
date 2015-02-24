@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Segment.h"
 
 @interface Story : NSObject
 
@@ -14,5 +15,10 @@
 @property(strong, nonatomic) NSString *title;
 @property(strong, nonatomic) NSDate *createdAt;
 @property(strong, nonatomic) NSArray *levels;
+
+-(instancetype)initWithJSONData:(NSDictionary *)jsonDataDictionary;
+-(Segment *)getLastSegment;
+-(void)addSegment:(Segment *)newSegment;
+-(NSString *)getFullText;
 
 @end
