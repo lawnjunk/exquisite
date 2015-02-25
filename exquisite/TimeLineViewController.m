@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerUsername;
+@property (strong, nonatomic) IBOutlet UILabel *numberOfSegments;
+
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImage;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -40,12 +42,17 @@
     NSLog(@"Results For user timeline fetch: %@", results);
     
     NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
+    NSString *screenName = results[@"screenName"];
+    self.headerUsername.text = screenName;
+    
     NSArray *posts = results[@"posts"];
     for(NSDictionary *currentSegmentDictionary in posts){
       Segment *seg = [[Segment alloc] initWithDictionary:currentSegmentDictionary];
       [allStorySegments addObject:seg];
     }
+
     self.allPosts = allStorySegments;
+    self.numberOfSegments.text = [NSString stringWithFormat:@"%lu Contributions", (unsigned long)self.allPosts.count];
     NSLog(@"%lu", (unsigned long)self.allPosts.count);
     [self.tableView reloadData];
   }];

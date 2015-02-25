@@ -130,6 +130,11 @@
     }
 }
 
+- (IBAction)finishedButtonPressed:(UIButton *)sender {
+  [self dismissViewControllerAnimated:true completion:^{
+    //Done Berah
+  }];
+}
 
 
 
