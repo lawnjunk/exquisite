@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface TimeLineViewController : UIViewController
+
+@property(strong, nonatomic) User *currentUser;
 
 @end
