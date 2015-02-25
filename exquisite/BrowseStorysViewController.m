@@ -8,12 +8,15 @@
 
 #import "BrowseStorysViewController.h"
 #import "NetworkController.h"
+#import "Story.h"
 
 @interface BrowseStorysViewController ()<UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property(strong, nonatomic) NetworkController *networkController;
+
+@property(strong, nonatomic) NSArray *allStoryHeaders;
 
 @end
 
@@ -24,9 +27,19 @@
   
   self.networkController = [NetworkController sharedService];
   
-  [self.networkController fetchCompletedStoriesWithCompletionHandler:^(NSArray *results, NSString *error) {
+  [self.networkController fetchStoriesForBrowserWithCompletionHandler:^(NSArray *results, NSString *error) {
     NSLog(@"The New Fetch Worked");
     NSLog(@"Results For user timeline fetch: %@", results);
+    
+    NSMutableArray *storyHeaders = [[NSMutableArray alloc] init];
+    for(NSDictionary *currentStoryHeader in results){
+      NSDictionary *currentStorySegment = currentStoryHeader[@"firstSegment"];
+      NSString *storyHeader = currentStorySegment[@"text"];
+      [storyHeaders addObject:storyHeader];
+    }
+    self.allStoryHeaders = storyHeaders;
+    [self.tableView reloadData];
+
   }];
   
   self.tableView.dataSource = self;
@@ -41,11 +54,23 @@
 //MARK: TableView DataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+  
+  if(self.allStoryHeaders != nil){
+    NSString *currentStoryHeader = self.allStoryHeaders[indexPath.row];
+    cell.textLabel.text = currentStoryHeader;
+  }
+  
   return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+  
+  if (self.allStoryHeaders !=nil) {
+    return self.allStoryHeaders.count;
+  }
+  
   return 1;
+  
 }
 
 #pragma turn of the time/battery status bar
