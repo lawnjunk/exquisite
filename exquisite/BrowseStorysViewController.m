@@ -7,10 +7,13 @@
 //
 
 #import "BrowseStorysViewController.h"
+#import "NetworkController.h"
 
 @interface BrowseStorysViewController ()<UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property(strong, nonatomic) NetworkController *networkController;
 
 @end
 
@@ -18,6 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  self.networkController = [NetworkController sharedService];
+  
+  [self.networkController fetchCompletedStoriesWithCompletionHandler:^(NSArray *results, NSString *error) {
+    NSLog(@"The New Fetch Worked");
+    NSLog(@"Results For user timeline fetch: %@", results);
+  }];
   
   self.tableView.dataSource = self;
     // Do any additional setup after loading the view.

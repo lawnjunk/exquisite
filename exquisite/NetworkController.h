@@ -16,6 +16,7 @@
 -(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd;
 
 -(void)fetchStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
+-(void)fetchCompletedStoriesWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler;
 -(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler;
 
 @end
