@@ -68,7 +68,6 @@
     [userDefaults synchronize];
 }
 
-
 -(void)fetchStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler {
   
   NSString *urlString = [NSString stringWithFormat:@"%@/story/", self.serverURLString];
@@ -127,8 +126,9 @@
   
   NSString *userName = currentUser.userName;
   
-  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, userName];
-  
+
+  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"matt"];
+    NSLog(@"request string %@", urlString);
   //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
   //  urlString = [urlString stringByAppendingString:searchTerm];
   //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -148,6 +148,7 @@
   NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     if (error) {
       NSLog(@"THERE WAS AN ERROR WITH THE DATA TASK");
+      NSLog(@"ERROR:%@", error.localizedDescription);
       completionHandler(nil,@"Could not connect");
     } else {
       NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;

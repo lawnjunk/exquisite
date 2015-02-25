@@ -7,6 +7,7 @@
 //
 
 #import "BrowseStorysViewController.h"
+#import "StoryTableViewCell.h"
 #import "NetworkController.h"
 #import "Story.h"
 
@@ -43,6 +44,9 @@
   }];
   
   self.tableView.dataSource = self;
+  
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 100;
     // Do any additional setup after loading the view.
 }
 
@@ -53,23 +57,29 @@
 
 //MARK: TableView DataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+  StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
-  if(self.allStoryHeaders != nil){
-    NSString *currentStoryHeader = self.allStoryHeaders[indexPath.row];
-    cell.textLabel.text = currentStoryHeader;
-  }
+//  if(self.allStoryHeaders != nil){
+//    NSString *currentStoryHeader = self.allStoryHeaders[indexPath.row];
+//    cell.textLabel.text = currentStoryHeader;
+//  }
+  
+  cell.storyTitle.text = @"Gnar";
+  cell.storySegment.text = @"l;akjsd;lfkjkajhkjh ;lkjasdfpon lkjasl;dkjf;lkjasdf ;lkajsdf ;lkjasdf ;ljasdf;lkjweohwovkjn kf;jgp ovkngopwklh lkd ;lkasdk ;hwhfu";
+  cell.dateLabel.text = @"2/15/15";
+  
+  
   
   return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   
-  if (self.allStoryHeaders !=nil) {
-    return self.allStoryHeaders.count;
-  }
+//  if (self.allStoryHeaders !=nil) {
+//    return self.allStoryHeaders.count;
+//  }
   
-  return 1;
+  return 25;
   
 }
 
