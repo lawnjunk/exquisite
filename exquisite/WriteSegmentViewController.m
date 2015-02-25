@@ -8,6 +8,7 @@
 
 #import "WriteSegmentViewController.h"
 #import "NetworkController.h"
+#import "ReadStoryViewController.h"
 
 @interface WriteSegmentViewController () <UIGestureRecognizerDelegate>
 
@@ -28,37 +29,26 @@
     if (!token) {
         #warning we shut be presenting modal a login controller
         NSLog(@"there was no token");
-        
         [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
     }
     
     [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
         NSLog(@"whatttt the fuuuuuuk are we dooing");
+        NSLog(@"%@ thesse results", results);
+        self.currentStory = [[Story alloc] initWithJSONData:results];
+        NSLog(@"we just tried to init the current story %@", self.currentStory.title);
+        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
+        
+        
     }];
+}
 
-    
-    
-//    
-//    
-//    NSString *testButton =  @"this is a test";
-//    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:testButton];
-//    NSURL *myURL = [NSURL URLWithString:@"1"];
-//    NSRange testRange = [testButton rangeOfString:@"is a"];
-//    NSRange rangeOfTest = [testButton rangeOfString:@"test"  ];
-//    [str addAttribute: value:myURL range:testRange];
-//
-//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangeOfTest];
-//    
-//    self.testTextView.attributedText = str;
-//    self.testTextView.delegate = self;
-//    self.testTextView.editable = false;
-//    yourTextView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSUnderlineStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
-//
-//    self.testTextView.dataDetectorTypes = UIDataDetectorTypeLink ;
-//    [self.testTextView setSelectedRange:testRange];
-    
-  
-    
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SHOW_READ_FROM_WRITE"]){
+        ReadStoryViewController *readVC = segue.destinationViewController;
+        readVC.selectedStory = self.currentStory;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

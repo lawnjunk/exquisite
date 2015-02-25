@@ -7,9 +7,14 @@
 //
 
 #import "ReadStoryViewController.h"
+#import "NetworkController.h"
+#import "Story.h"
+#import "Segment.h"
 
 @interface ReadStoryViewController () <UIGestureRecognizerDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *testTextView;
+
+@property (weak, nonatomic) IBOutlet UITextView *readStoryTextView;
+
 @property (strong,nonatomic) UIGestureRecognizer *tapTextFiled;
 @end
 
@@ -17,24 +22,80 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.tapTextFiled.delegate = self;
-    self.tapTextFiled = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(textTapped:)];
     
-    NSString *text = @"whatsupp madude i was wondering what dude";
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
-    NSRange first = [text rangeOfString:@"whatsupp madude"];
-    NSRange second = [text rangeOfString:@"i was wondering what dude"];
-    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:first];
-    [str addAttribute:@"fragmentIndex" value:@1 range:first];
-    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:first];
-    [str addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:second];
-    [str addAttribute:@"fragmentIndex" value:@2 range:second];
-    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:second];
-    self.testTextView.attributedText = str;
-    self.testTextView.editable = false;
-    self.testTextView.selectable = false;
-    [self.testTextView addGestureRecognizer:self.tapTextFiled];
+//    [[NetworkController sharedService] fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
+//        NSLog(@"results is %@", results);
+//        self.selectedStory = [[Story alloc] initWithJSONData:results];
+//    }];
+//    
+//    NSLog(@"first level = %@", self.selectedStory.levels[0]);
+//    
+//    Level *currentLevel = self.selectedStory.levels[0];
+//    
+//    Segment *newSegment = currentLevel.segments[0];
+//    NSLog(@" current segement text = %@",newSegment.text);
+//    
+//    
+    NSLog(@"selected story title %@", self.selectedStory.title);
+    
+    
+    // Do any additional setup after loading the view.
+//    self.tapTextFiled.delegate = self;
+//    self.tapTextFiled = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(textTapped:)];
+//    
+//    NSString *text = @"whatsupp madude i was wondering what dude";
+//    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
+//    NSRange first = [text rangeOfString:@"whatsupp madude"];
+//    NSRange second = [text rangeOfString:@"i was wondering what dude"];
+//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:first];
+//    [str addAttribute:@"fragmentIndex" value:@1 range:first];
+//    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:first];
+//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:second];
+//    [str addAttribute:@"fragmentIndex" value:@2 range:second];
+//    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:second];
+//    self.readStoryTextView.attributedText = str;
+//    self.readStoryTextView.editable = false;
+//    self.readStoryTextView.selectable = false;
+//    [self.readStoryTextView addGestureRecognizer:self.tapTextFiled];
+//    
+//    
+    
+    
+    NSMutableAttributedString *fulltext = [[NSMutableAttributedString alloc] init];
+
+    int levelcount = 0;
+    for(Level *level in self.selectedStory.levels){
+        levelcount += 1;
+        NSLog(@" this the level %@", level);
+        for (Segment *seg in level.segments) {
+            
+            
+            NSLog(@"%@", seg.text);
+            NSMutableAttributedString *tempAtr = [[NSMutableAttributedString alloc] initWithString:seg.text];
+            //NSAttributedString *temp = [[NSAttributedString alloc] initWithString:seg.text];
+            //[mutStr appendAttributedString:temp];
+            //
+            //NSMutableAttributedString *currentSegmentText = [[NSMutableAttributedString alloc] initWithString:seg.text];
+            NSRange fullSegment = [seg.text rangeOfString:seg.text];
+            if (levelcount %2  == 0){
+                [tempAtr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:fullSegment];
+            } else {
+                [tempAtr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:fullSegment];
+            }
+//            NSAttributedString *str = [[NSAttributedString alloc] initWithString:seg.text];
+            
+            
+            [fulltext appendAttributedString:tempAtr];
+//            NSLog(@"%@", fulltext);
+
+        }
+    }
+    
+    
+    self.readStoryTextView.attributedText = fulltext;
+    NSLog(@"%@",fulltext);
+//    self.readStoryTextView.text = fullText;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +129,9 @@
         }
     }
 }
+
+
+
 
 
 #pragma turn of the time/battery status bar

@@ -9,13 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
-@interface Segment : NSObject
 
+@interface Segment : NSObject
+-(instancetype)initWithDictionary:(NSDictionary *) segDictionary;
 @property(strong, nonatomic) NSString *createdAt;
 @property (strong, nonatomic) NSString *text;
-
 @property (nonatomic) int segmentID;
-
 @property(strong, nonatomic) User *user;
 
 
