@@ -42,7 +42,7 @@
     if (parseError) {
         NSLog(@"there was an error parsing the json story dictionary");
     } else {
-        NSLog(storyDictionary.description);
+        NSLog(@"story descriotion @%",storyDictionary.description);
 //      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
 
         completionHandler(storyDictionary, nil);

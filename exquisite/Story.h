@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Segment.h"
-
+#import "Level.h"
 @interface Story : NSObject
 
 @property(nonatomic) int storyID;

@@ -12,10 +12,13 @@
 -(instancetype)initWithArray:(NSArray *) levelArray {
     self = [super init];
     
+    NSMutableArray* tempArray = [[NSMutableArray alloc] init];
     for (NSDictionary* segDictionary in levelArray ) {
         Segment *newSegment = [[Segment alloc] initWithDictionary:segDictionary];
-        [self.segments addObject: newSegment];
+        NSLog(@"seg user %@", segDictionary[@"text"]);
+        [tempArray addObject: newSegment];
     }
+    self.segments = tempArray;
     
     return self;
 }

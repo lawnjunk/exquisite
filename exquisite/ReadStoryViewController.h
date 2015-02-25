@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Story.h"
 @interface ReadStoryViewController : UIViewController
-
+@property (strong,nonatomic) Story *selectedStory;
 @end

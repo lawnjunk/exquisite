@@ -7,21 +7,24 @@
 //
 
 #import "Story.h"
-#import "Level.h"
+
 
 @implementation Story
 
 -(instancetype)initWithJSONData:(NSDictionary *)jsonDataDictionary{
   self = [super init];
-  self.storyID = jsonDataDictionary[@"storyID"];
+  self.storyID = (int) jsonDataDictionary[@"storyID"];
   self.title = jsonDataDictionary[@"title"];
-  self.levels = jsonDataDictionary[@"levels"];
+    
+    NSMutableArray *tempLevels = [[NSMutableArray alloc] init];
+    for (NSArray* level in jsonDataDictionary[@"levels"]) {
+        Level *newLevel = [[Level alloc] initWithArray:level];
+        [tempLevels addObject:newLevel];
+    }
+    
+    self.levels = tempLevels;
   #warning fix date issue
   //  self.createdAt = jsonDataDictionary[@"createdAt"];
-  
-
-  
-  NSLog(@"This story has %lu Levels.",(unsigned long)self.levels.count);
 
   return self;
 }

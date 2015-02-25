@@ -15,7 +15,8 @@
     self.text = segDictionary[@"text"];
     self.segmentID = 0;
     self.createdAt = segDictionary[@"createdAt"];
-
+    self.user = segDictionary[@"user"];
+    NSLog(@"seg ... the uesr is %@", self.user);
     return self;
 }
 @end
