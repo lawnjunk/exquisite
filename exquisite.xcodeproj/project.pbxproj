@@ -26,7 +26,6 @@
 		644CBF741A9C07B500CE9FF6 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF731A9C07B500CE9FF6 /* Story.m */; };
 		644CBF771A9C087300CE9FF6 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF761A9C087300CE9FF6 /* Level.m */; };
 		644CBF7D1A9C098E00CE9FF6 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF7C1A9C098E00CE9FF6 /* Segment.m */; };
-		644CBF851A9D1C0600CE9FF6 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF841A9D1C0600CE9FF6 /* FXBlurView.m */; };
 		64924D131A9BB086008E3C93 /* devNotes in Resources */ = {isa = PBXBuildFile; fileRef = 64924D121A9BB086008E3C93 /* devNotes */; };
 /* End PBXBuildFile section */
 
@@ -74,8 +73,6 @@
 		644CBF761A9C087300CE9FF6 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		644CBF7B1A9C098E00CE9FF6 /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
 		644CBF7C1A9C098E00CE9FF6 /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segment.m; sourceTree = "<group>"; };
-		644CBF831A9D1C0600CE9FF6 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = "../../../../Downloads/TB_TwitterUI-master/TB_TwitterHeader/FXBlurView.h"; sourceTree = "<group>"; };
-		644CBF841A9D1C0600CE9FF6 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXBlurView.m; path = "../../../../Downloads/TB_TwitterUI-master/TB_TwitterHeader/FXBlurView.m"; sourceTree = "<group>"; };
 		64924D121A9BB086008E3C93 /* devNotes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = devNotes; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,8 +151,6 @@
 		55154C841A9BAD420083141C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				644CBF831A9D1C0600CE9FF6 /* FXBlurView.h */,
-				644CBF841A9D1C0600CE9FF6 /* FXBlurView.m */,
 				55154C851A9BAD420083141C /* Info.plist */,
 				55154C861A9BAD420083141C /* main.m */,
 			);
@@ -286,7 +281,6 @@
 				644CBF6E1A9C079800CE9FF6 /* User.m in Sources */,
 				644CBF771A9C087300CE9FF6 /* Level.m in Sources */,
 				55154CB81A9BD7880083141C /* ReadStoryViewController.m in Sources */,
-				644CBF851A9D1C0600CE9FF6 /* FXBlurView.m in Sources */,
 				55154CAF1A9BD7190083141C /* WriteSegmentViewController.m in Sources */,
 				55154CBB1A9C0C990083141C /* NetworkController.m in Sources */,
 				644CBF741A9C07B500CE9FF6 /* Story.m in Sources */,

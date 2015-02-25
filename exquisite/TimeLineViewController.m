@@ -5,7 +5,7 @@
 //  Created by drwizzard on 2/23/15.
 //  Copyright (c) 2015 nacnud. All rights reserved.
 //
-#import "FXBlurView.h"
+
 #import "TimeLineViewController.h"
 
 @interface TimeLineViewController ()<UITableViewDataSource>
