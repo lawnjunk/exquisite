@@ -7,22 +7,20 @@
 //
 
 #import "TimeLineViewController.h"
+#import "NetworkController.h"
+#import "Segment.h"
 
 @interface TimeLineViewController ()<UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UIView *header;
 @property (strong, nonatomic) IBOutlet UILabel *headerUsername;
 
-//@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *avatarImage;
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-//@property(strong, nonatomic) IBOutlet UIImageView *headerImageView;
-//@property(strong, nonatomic) IBOutlet UIImageView *headerBlurImageView;
-//@property(nonatomic) CGFloat offSetHeaderStop;
-//@property(nonatomic) CGFloat offsetBLabelHeader;
-//@property(nonatomic) CGFloat distanceWLabelHeader;
+@property(strong, nonatomic) NetworkController *networkController;
+
+@property(strong, nonatomic) NSArray *allPosts;
 
 @end
 
@@ -34,6 +32,23 @@
   self.tableView.dataSource = self;
   
   self.avatarImage.backgroundColor = [UIColor blackColor];
+  
+  self.networkController = [NetworkController sharedService];
+  
+  [self.networkController fetchTimelineForUser:self.currentUser withCompletionHandler:^(NSDictionary *results, NSString *error) {
+    NSLog(@"The New Fetch Worked");
+    NSLog(@"Results For user timeline fetch: %@", results);
+    
+    NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
+    NSArray *posts = results[@"posts"];
+    for(NSDictionary *currentSegmentDictionary in posts){
+      Segment *seg = [[Segment alloc] initWithDictionary:currentSegmentDictionary];
+      [allStorySegments addObject:seg];
+    }
+    self.allPosts = allStorySegments;
+    NSLog(@"%lu", (unsigned long)self.allPosts.count);
+    [self.tableView reloadData];
+  }];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -165,11 +180,21 @@
 //MARK: TableView DataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+  
+  if(self.allPosts != nil){
+    Segment *currentSegment = self.allPosts[indexPath.row];
+    cell.textLabel.text = currentSegment.text;
+    NSLog(@"%@",currentSegment.text);
+  }
+  
   return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-  return 1;
+  if (self.allPosts == nil) {
+    return 0;
+  }
+  return self.allPosts.count;
 }
 
 

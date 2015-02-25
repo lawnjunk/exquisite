@@ -50,4 +50,22 @@
     
 }
 
+-(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler {
+  
+  // using json file for testing until we have working endpoints on the rest api
+  NSString *pathToJson = [[NSBundle mainBundle] pathForResource:@"PretendProfile" ofType:@"json"];
+  NSData *data = [NSData dataWithContentsOfFile:pathToJson];
+  NSError *parseError;
+  NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+  if (parseError) {
+    NSLog(@"there was an error parsing the json user Timeline dictionary");
+  } else {
+    NSLog(@"story descriotion @%",storyDictionary.description);
+    //      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
+    
+    completionHandler(storyDictionary, nil);
+  }
+  
+}
+
 @end
