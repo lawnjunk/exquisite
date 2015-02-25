@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MZT-T9-G7n">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -163,10 +163,42 @@
             </objects>
             <point key="canvasLocation" x="48" y="1"/>
         </scene>
+        <!--Swipe Shredz View Controller-->
+        <scene sceneID="Udb-sP-ZRf">
+            <objects>
+                <viewController id="MZT-T9-G7n" customClass="SwipeShredzViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jh8-t8-BnD"/>
+                        <viewControllerLayoutGuide type="bottom" id="v7C-fk-ZOE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rlz-zA-CNn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vs2-0S-V6A">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="embed" id="66t-iU-l71"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vs2-0S-V6A" secondAttribute="trailing" constant="-16" id="TkF-RK-yn1"/>
+                            <constraint firstItem="v7C-fk-ZOE" firstAttribute="top" secondItem="Vs2-0S-V6A" secondAttribute="bottom" id="lrV-p2-BJJ"/>
+                            <constraint firstItem="Vs2-0S-V6A" firstAttribute="leading" secondItem="rlz-zA-CNn" secondAttribute="leadingMargin" constant="-16" id="p7n-tI-K86"/>
+                            <constraint firstItem="Vs2-0S-V6A" firstAttribute="top" secondItem="rlz-zA-CNn" secondAttribute="topMargin" id="xd2-Vw-366"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lbd-gE-3xo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="-143"/>
+        </scene>
         <!--Write Segment View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WriteSegmentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WRITE_VC" id="BYZ-38-t0r" customClass="WriteSegmentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
