@@ -12,5 +12,4 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *storyTitle;
 @property (strong, nonatomic) IBOutlet UILabel *storySegment;
-
 @end

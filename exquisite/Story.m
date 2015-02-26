@@ -18,6 +18,7 @@
     
     NSMutableArray *tempLevels = [[NSMutableArray alloc] init];
     for (NSArray* level in jsonDataDictionary[@"levels"]) {
+        NSLog(@"level be makin now");
         Level *newLevel = [[Level alloc] initWithArray:level];
         [tempLevels addObject:newLevel];
     }
@@ -32,6 +33,7 @@
 -(Segment *)getLastSegment{
     Level *level = self.levels.lastObject;
     Segment *lastSegment = level.segments.lastObject;
+    NSLog(@"lastSegmenttext %@", lastSegment.text);
     return  lastSegment;
 }
 
