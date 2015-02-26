@@ -30,11 +30,36 @@
 }
 
 -(Segment *)getLastSegment{
-  return nil;
+    Level *level = self.levels.lastObject;
+    Segment *lastSegment = level.segments.lastObject;
+    return  lastSegment;
 }
 
 -(void)addSegment:(Segment *)newSegment{
-  
+    
+    
+    //    NSLog(@"new seg text: %@", newSegment.text);
+    //    Level *lastLevel = self.levels.lastObject;
+
+    //    Segment *lastSegOnNewSeg = newSegArray.lastObject;
+    //    NSLog(@"last segment text on newsegarray %@",lastSegOnNewSeg.text);
+    //    lastLevel.segments = newSegArray;
+//    
+    Level *lastLevel = self.levels.lastObject;
+    NSLog(@" last level segemnet count %ud",lastLevel.segments.count);
+    if (lastLevel.segments.count == 3) {
+        NSMutableArray *newMutableLevelArray = [[NSMutableArray alloc]initWithArray: self.levels];
+        NSMutableArray *newSegArray = [[NSMutableArray alloc] initWithArray:lastLevel.segments];
+        [newSegArray addObject:newSegment];
+        Level *newLevel = [[Level alloc] init];
+        newLevel.segments = newSegArray;
+        [newMutableLevelArray addObject:newLevel];
+        self.levels = newMutableLevelArray;
+    } else {
+        NSMutableArray *newSegmentArray = [[NSMutableArray alloc] initWithArray:lastLevel.segments];
+        [newSegmentArray addObject:newSegment];
+        lastLevel.segments = newSegmentArray;
+    }
 }
 
 -(NSString *)getFullText{

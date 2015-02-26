@@ -49,6 +49,25 @@
     }
 }
 
+
+
+-(void)fetchStoryWithIdentifier:(NSString * )storyID withCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler {
+    
+    // using json file for testing until we have working endpoints on the rest api
+    NSString *pathToJson = [[NSBundle mainBundle] pathForResource:@"PretendStory" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:pathToJson];
+    NSError *parseError;
+    NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+    if (parseError) {
+        NSLog(@"there was an error parsing the json story dictionary");
+    } else {
+        NSLog(@"story descriotion %@",storyDictionary.description);
+        //      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
+        
+        completionHandler(storyDictionary, nil);
+    }
+}
+
 -(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler {
   
   // using json file for testing until we have working endpoints on the rest api
