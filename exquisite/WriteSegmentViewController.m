@@ -17,6 +17,8 @@
 @property NSUInteger initialFragmentLength;
 @property (strong,nonatomic) Segment *lastSegment;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (strong,nonatomic) NSString *username;
+@property (nonatomic) NSInteger levelId;
 
 @end
 
@@ -28,33 +30,49 @@
     [self.textView setReturnKeyType:UIReturnKeyDone];
     self.networkController = [NetworkController sharedService];
     
+    
+    
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefaults stringForKey:@"token"];
-    if (!token) {
-        #warning we shut be presenting modal a login controller
-        NSLog(@"there was no token");
-        [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
+//    NSString *token = [userDefaults stringForKey:@"token"];
+//    if (!token) {
+//        #warning we shut be presenting modal a login controller
+//        NSLog(@"there was no token");
+////        [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
+//    }
+    
+    NSString *username = [userDefaults stringForKey:@"username"];
+    if (!username){
+        NSLog(@"there was no username in userdfaults");
+        [self.networkController createNewAccountWithUserName:@"booger" password:@"password" email:@"booger@booger.net" location:@"hereOrThere"];
+    } else {
+        self.username = username;
     }
     
-    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
+//    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
 //    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
-//        NSLog(@"whatttt the fuuuuuuk are we dooing");
-//        NSLog(@"%@ thesse results", results);
+
+    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
+        
+        NSLog(@"%@ thesse results", results);
+        
+        
         self.currentStory = [[Story alloc] initWithJSONData:results];
+        self.lastSegment = [self.currentStory getLastSegment];
+        NSLog(@"last seg text: %@", self.lastSegment.text);
+        self.initialFragment = self.lastSegment.text;
+        
+        self.initialFragmentLength = self.initialFragment.length;
+        
+        //    NSLog(@"the inital %@", self.initialFragmentLength);
+        
+        self.textView.text = self.initialFragment;
 //        NSLog(@"we just tried to init the current story %@", self.currentStory.title);
 //        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
     }];
     
     
-    self.lastSegment = [self.currentStory getLastSegment];
-    NSLog(@"last seg text: %@", self.lastSegment.text);
-    self.initialFragment = self.lastSegment.text;
-    
-    self.initialFragmentLength = self.initialFragment.length;
-    
-//    NSLog(@"the inital %@", self.initialFragmentLength);
-    
-    self.textView.text = self.initialFragment;
+
 }
 
 
@@ -84,17 +102,24 @@
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSMutableDictionary *newSegDictionary = [[NSMutableDictionary alloc] init];
     NSString *segmentText = [ NSString stringWithFormat: @"%@ ", trimmedString];
-    [newSegDictionary setObject:segmentText forKey:@"text"];
+    
+    
+    [newSegDictionary setObject:[NSNumber numberWithInteger:self.levelId] forKey:@"levelId"];
+    [newSegDictionary setObject:self.username forKey:@"author"];
+    [newSegDictionary setObject:segmentText forKey:@"postBody"];
+    
+    NSLog(@"last segment.storyID %@", self.lastSegment.storyId);
+    [newSegDictionary setObject:self.lastSegment.storyName forKey:@"storyName"];
+    [newSegDictionary setObject:self.lastSegment.storyId forKey:@"storyId"];
+    
  #warning update this to actually grab the username from ns user defaults
-    [newSegDictionary setObject:@"nacnud" forKey:@"user"];
-    NSDate *currDate = [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"dd.MM.YY HH:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:currDate];
-    NSLog(@"%@",dateString);
-    [newSegDictionary setValue:dateString forKey:@"createdAt"];
-    NSLog(@"dictionary text %@", newSegDictionary[@"text"]);
+
+
+    NSLog(@"dictionary text %@", newSegDictionary[@"postBody"]);
+
+    
     Segment *newSeg = [[Segment alloc] initWithDictionary:newSegDictionary];
+    [self.networkController postSegment:newSeg];
     [self.currentStory addSegment:newSeg];
     [self performSegueWithIdentifier:@"SHOW_READ_FROM_WRITE" sender:self];
 }

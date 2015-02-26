@@ -10,6 +10,7 @@
 #import "NetworkController.h"
 #import "Story.h"
 #import "Segment.h"
+#import "UIColor+ColorPalet.h"
 
 @interface ReadStoryViewController () <UIGestureRecognizerDelegate>
 
@@ -22,78 +23,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    [[NetworkController sharedService] fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
-//        NSLog(@"results is %@", results);
-//        self.selectedStory = [[Story alloc] initWithJSONData:results];
-//    }];
-//    
-//    NSLog(@"first level = %@", self.selectedStory.levels[0]);
-//    
-//    Level *currentLevel = self.selectedStory.levels[0];
-//    
-//    Segment *newSegment = currentLevel.segments[0];
-//    NSLog(@" current segement text = %@",newSegment.text);
-//    
-//    
+    self.readStoryTextView.editable = false;
+    self.readStoryTextView.selectable = false;
+    self.readStoryTextView.scrollEnabled = true;
     NSLog(@"selected story title %@", self.selectedStory.title);
-    
-    
-    // Do any additional setup after loading the view.
-//    self.tapTextFiled.delegate = self;
-//    self.tapTextFiled = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(textTapped:)];
-//    
-//    NSString *text = @"whatsupp madude i was wondering what dude";
-//    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:text];
-//    NSRange first = [text rangeOfString:@"whatsupp madude"];
-//    NSRange second = [text rangeOfString:@"i was wondering what dude"];
-//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:first];
-//    [str addAttribute:@"fragmentIndex" value:@1 range:first];
-//    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:first];
-//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:second];
-//    [str addAttribute:@"fragmentIndex" value:@2 range:second];
-//    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:second];
-//    self.readStoryTextView.attributedText = str;
-//    self.readStoryTextView.editable = false;
-//    self.readStoryTextView.selectable = false;
-//    [self.readStoryTextView addGestureRecognizer:self.tapTextFiled];
-//    
-//    
-    
-    
-    NSMutableAttributedString *fulltext = [[NSMutableAttributedString alloc] init];
+    self.tapTextFiled = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(textTapped:)];
 
+    NSMutableAttributedString *fulltext = [[NSMutableAttributedString alloc] initWithString:@"\t\t"];
     int levelcount = 0;
     for(Level *level in self.selectedStory.levels){
-        levelcount += 1;
+        
         NSLog(@" this the level %@", level);
-        for (Segment *seg in level.segments) {
-            
-            
-            NSLog(@"%@", seg.text);
-            NSMutableAttributedString *tempAtr = [[NSMutableAttributedString alloc] initWithString:seg.text];
-            //NSAttributedString *temp = [[NSAttributedString alloc] initWithString:seg.text];
-            //[mutStr appendAttributedString:temp];
-            //
-            //NSMutableAttributedString *currentSegmentText = [[NSMutableAttributedString alloc] initWithString:seg.text];
-            NSRange fullSegment = [seg.text rangeOfString:seg.text];
-            if (levelcount %2  == 0){
-                [tempAtr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:fullSegment];
-            } else {
-                [tempAtr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:fullSegment];
-            }
-//            NSAttributedString *str = [[NSAttributedString alloc] initWithString:seg.text];
-            
-            
-            [fulltext appendAttributedString:tempAtr];
-//            NSLog(@"%@", fulltext);
-
+        Segment *seg = level.segments[0];
+        
+        
+        NSLog(@"%@", seg.text);
+        NSMutableAttributedString *tempAtr = [[NSMutableAttributedString alloc] initWithString:seg.text];
+        
+        NSRange fullSegment = [seg.text rangeOfString:seg.text];
+        
+        if (levelcount %2  == 0){
+            [tempAtr addAttribute:NSForegroundColorAttributeName value:[UIColor tirqLight] range:fullSegment];
+            [tempAtr addAttribute:@"levelId" value:[NSString stringWithFormat:@"%d", levelcount] range:fullSegment];
+        } else {
+            [tempAtr addAttribute:NSForegroundColorAttributeName value:[UIColor tirqMedium] range:fullSegment];
+            [tempAtr addAttribute:@"levelId" value:[NSString stringWithFormat:@"%d", levelcount] range:fullSegment];
         }
+        
+        [fulltext appendAttributedString:tempAtr];
+        levelcount += 1;
     }
     
-    
+    [fulltext addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:21] range:NSMakeRange(0, fulltext.length -1)];
     self.readStoryTextView.attributedText = fulltext;
-    NSLog(@"%@",fulltext);
+    [self.readStoryTextView addGestureRecognizer:self.tapTextFiled];
+//    NSLog(@"%@",fulltext);
 //    self.readStoryTextView.text = fullText;
     
 }
@@ -112,7 +76,7 @@
     location.x -= textView.textContainerInset.left;
     location.y -= textView.textContainerInset.right;
     
-//    NSLog(@"we got the location %@", NSStringFromCGPoint(location));
+    NSLog(@"we got the location %@", NSStringFromCGPoint(location));
     
     NSUInteger characterIndex;
     characterIndex = [layoutManager characterIndexForPoint:location inTextContainer:textView.textContainer fractionOfDistanceBetweenInsertionPoints:NULL];
@@ -122,9 +86,13 @@
         NSDictionary *attributes = [textView.textStorage attributesAtIndex:characterIndex effectiveRange:&range];
         //        NSLog(@" %@, %@", attributes, NSStringFromRange(range));
         
-        if ( attributes[@"fragmentIndex"] == @1) {
+        
+        
+        NSString *levelId = attributes[@"levelId"];
+        NSLog(@"levelId at click is : %@", levelId);
+        if ( [levelId isEqualToString:@"0" ]) {
             NSLog(@"selected the first dude");
-        } else if (attributes[@"fragmentIndex"] == @2 ){
+        } else if ([levelId isEqualToString:@"1"] ){
             NSLog(@"selected dude number 2");
         }
     }

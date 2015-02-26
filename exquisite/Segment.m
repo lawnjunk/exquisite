@@ -15,10 +15,13 @@
 -(instancetype)initWithDictionary:(NSDictionary *) segDictionary {
     self = [super init];
     
-    self.text = segDictionary[@"text"];
-    self.segmentID = 0;
+    self.text = segDictionary[@"postBody"];
+    self.segmentID = segDictionary[@"_id"];
     self.createdAt = segDictionary[@"createdAt"];
-    self.user = segDictionary[@"user"];
+    self.author = segDictionary[@"author"];
+    self.levelId = segDictionary[@"levelId"];
+    self.storyId = segDictionary[@"storyId"];
+    self.storyName = segDictionary[@"storyName"];
 //    NSLog(@"seg ... the uesr is %@", self.user);
     return self;
 }
