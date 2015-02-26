@@ -49,10 +49,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
   
-  self.userNameField.center = CGPointMake(-500, self.userNameField.center.y);
-  self.emailField.center = CGPointMake(-500, self.emailField.center.y);
-  self.passwordField.center = CGPointMake(500, self.passwordField.center.y);
-  
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
@@ -82,6 +78,10 @@
     
   } completion:^(BOOL finished) {
     //Completed Animation
+    NSLog(@"%f , %f",self.userNameField.center.x, self.userNameField.center.y);
+    NSLog(@"%f , %f",self.emailField.center.x, self.emailField.center.y);
+    NSLog(@"%f , %f",self.passwordField.center.x, self.passwordField.center.y);
+    
     self.userNameField.hidden = true;
     self.emailField.hidden = true;
     self.passwordField.hidden = true;
@@ -135,9 +135,9 @@
   self.loginButton.center = CGPointMake(self.view.frame.size.width/2, self.loginButton.center.y);
   self.signUpButton.center = CGPointMake(self.view.frame.size.width/2, self.signUpButton.center.y);
   
-  self.userNameField.center = CGPointMake(-500, self.userNameField.center.y);
-  self.emailField.center = CGPointMake(500, self.emailField.center.y);
-  self.passwordField.center = CGPointMake(-500, self.passwordField.center.y);
+  self.userNameField.center = CGPointMake(-300, self.userNameField.center.y);
+  self.emailField.center = CGPointMake(700, self.emailField.center.y);
+  self.passwordField.center = CGPointMake(-300, self.passwordField.center.y);
 
   
 }
