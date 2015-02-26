@@ -9,8 +9,21 @@
 #import "NetworkController.h"
 #import "Story.h"
 
+@interface NetworkController()
+
+@property(strong,nonatomic) NSString *serverURLString;
+
+@end
+
 @implementation NetworkController
 
+
+-(NSString *)serverURLString{
+  if (!_serverURLString) {
+    _serverURLString = @"10.97.110.240:3000";
+  }
+  return _serverURLString;
+}
 
 +(id)sharedService {
     static NetworkController *theSharedService;
@@ -21,9 +34,33 @@
     return theSharedService;
 }
 
+//-(void)requestAceessToken{
+//#warning we need this url to make the real request.
+// NSString *url = @"";
+//}
 
+//-(void) handleCallBackURL:(NSURL *)url {
+//  
+//  NSString *code = url.query;
+//  
+//  //This is one way you can pass back info in a POST, via passing items as parameters in the URL
+//  
+////  NSURL *oauthURL = "https://github.com/login/oauth/access_token?\(code!)&client_id=\(self.clientID)&client_secret=\(self.clientSecret)";
+//  NSString *oauthURL = @"https://github.com/login/oauth/access_token?\(code!)&client_id=\(self.clientID)&client_secret=\(self.clientSecret)";
+//
+//  NSMutableURLRequest *postRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:oauthURL]];
+//  postRequest.HTTPMethod = @"POST";
+//  
+//}
 
 -(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd{
+  
+  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, username];
+  
+  NSURL *url = [[NSURL alloc] initWithString:urlString];
+
+  NSURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  
     NSLog(@"i made a fake token");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *token = @"thisTokenIsATempForTest";
@@ -31,22 +68,57 @@
     [userDefaults synchronize];
 }
 
-
 -(void)fetchStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler {
-    
-    // using json file for testing until we have working endpoints on the rest api
-    NSString *pathToJson = [[NSBundle mainBundle] pathForResource:@"PretendStory" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:pathToJson];
-    NSError *parseError;
-    NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-    if (parseError) {
-        NSLog(@"there was an error parsing the json story dictionary");
+  
+  NSString *urlString = [NSString stringWithFormat:@"%@/story/", self.serverURLString];
+  
+//  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
+//  urlString = [urlString stringByAppendingString:searchTerm];
+//  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//  NSString *token = [defaults objectForKey:@"token"];
+//  if (token) {
+//    urlString = [urlString stringByAppendingString:@"&access_token="];
+//    urlString = [urlString stringByAppendingString:token];
+//    urlString = [urlString stringByAppendingString:@"&key=5Vpg3uTqCwAssGUjZx73wg(("];
+//  }
+  
+  NSURL *url = [NSURL URLWithString:urlString];
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  request.HTTPMethod = @"GET";
+  
+  NSURLSession *session = [NSURLSession sharedSession];
+  
+  NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (error) {
+      NSLog(@"THERE WAS AN ERROR WITH THE DATA TASK");
+      completionHandler(nil,@"Could not connect");
     } else {
-        NSLog(@"story descriotion %@",storyDictionary.description);
-//      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
-
-        completionHandler(storyDictionary, nil);
+      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+      NSInteger statusCode = httpResponse.statusCode;
+      switch (statusCode) {
+        case 200 ... 299: {
+          NSLog(@"%ld",(long)statusCode);
+          
+          NSError *parseError;
+          NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+          
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (storyDictionary) {
+              completionHandler(storyDictionary,nil);
+            } else {
+              completionHandler(nil,@"Story could not be Serialized");
+            }
+          });
+          break;
+        }
+        default:
+          NSLog(@"%ld",(long)statusCode);
+          break;
+      }
+      
     }
+  }];
+  [dataTask resume];
 }
 
 
@@ -70,38 +142,113 @@
 
 -(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler {
   
-  // using json file for testing until we have working endpoints on the rest api
-  NSString *pathToJson = [[NSBundle mainBundle] pathForResource:@"PretendProfile" ofType:@"json"];
-  NSData *data = [NSData dataWithContentsOfFile:pathToJson];
-  NSError *parseError;
-  NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-  if (parseError) {
-    NSLog(@"there was an error parsing the json user Timeline dictionary");
-  } else {
-    NSLog(@"story descriotion %@",storyDictionary.description);
-    //      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
-    
-    completionHandler(storyDictionary, nil);
-  }
+  NSString *userName = currentUser.userName;
+  
+
+  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"matt"];
+    NSLog(@"request string %@", urlString);
+  //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
+  //  urlString = [urlString stringByAppendingString:searchTerm];
+  //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  //  NSString *token = [defaults objectForKey:@"token"];
+  //  if (token) {
+  //    urlString = [urlString stringByAppendingString:@"&access_token="];
+  //    urlString = [urlString stringByAppendingString:token];
+  //    urlString = [urlString stringByAppendingString:@"&key=5Vpg3uTqCwAssGUjZx73wg(("];
+  //  }
+  
+  NSURL *url = [NSURL URLWithString:urlString];
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  request.HTTPMethod = @"GET";
+  
+  NSURLSession *session = [NSURLSession sharedSession];
+  
+  NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (error) {
+      NSLog(@"THERE WAS AN ERROR WITH THE DATA TASK");
+      NSLog(@"ERROR:%@", error.localizedDescription);
+      completionHandler(nil,@"Could not connect");
+    } else {
+      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+      NSInteger statusCode = httpResponse.statusCode;
+      switch (statusCode) {
+        case 200 ... 299: {
+          NSLog(@"%ld",(long)statusCode);
+          
+          NSError *parseError;
+          NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+          
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (storyDictionary) {
+              completionHandler(storyDictionary,nil);
+            } else {
+              completionHandler(nil,@"Story could not be Serialized");
+            }
+          });
+          break;
+        }
+        default:
+          NSLog(@"%ld",(long)statusCode);
+          break;
+      }
+      
+    }
+  }];
+  [dataTask resume];
 }
 
 -(void)fetchStoriesForBrowserWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler {
   
-  // using json file for testing until we have working endpoints on the rest api
-  NSString *pathToJson = [[NSBundle mainBundle] pathForResource:@"PretendStoryBrowers" ofType:@"json"];
-  NSData *data = [NSData dataWithContentsOfFile:pathToJson];
-  NSError *parseError;
+  NSString *urlString = [NSString stringWithFormat:@"%@/story/", self.serverURLString];
   
-  NSArray *storiesArray = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-  if (parseError) {
-    NSLog(@"There was an error parsing the Story Browser dictionary");
-  } else {
-    NSLog(@"story descriotion: %@",storiesArray.description);
-    //      Story *wat = [[Story alloc]  initWithJSONData:storyDictionary];
-    
-    
-    completionHandler(storiesArray, nil);
-  }
+  //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
+  //  urlString = [urlString stringByAppendingString:searchTerm];
+  //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  //  NSString *token = [defaults objectForKey:@"token"];
+  //  if (token) {
+  //    urlString = [urlString stringByAppendingString:@"&access_token="];
+  //    urlString = [urlString stringByAppendingString:token];
+  //    urlString = [urlString stringByAppendingString:@"&key=5Vpg3uTqCwAssGUjZx73wg(("];
+  //  }
+  
+  NSURL *url = [NSURL URLWithString:urlString];
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  request.HTTPMethod = @"GET";
+  
+  NSURLSession *session = [NSURLSession sharedSession];
+  
+  NSURLSessionTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (error) {
+      NSLog(@"THERE WAS AN ERROR WITH THE DATA TASK");
+      completionHandler(nil,@"Could not connect");
+    } else {
+      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+      NSInteger statusCode = httpResponse.statusCode;
+      switch (statusCode) {
+        case 200 ... 299: {
+          NSLog(@"%ld",(long)statusCode);
+          
+          NSError *parseError;
+          NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+          
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (storyDictionary) {
+              completionHandler(storyDictionary,nil);
+            } else {
+              completionHandler(nil,@"Story could not be Serialized");
+            }
+          });
+          break;
+        }
+        default:
+          NSLog(@"%ld",(long)statusCode);
+          break;
+      }
+      
+    }
+  }];
+  [dataTask resume];
+  
 }
 
 @end
