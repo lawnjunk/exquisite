@@ -103,7 +103,7 @@
     [segmentPostBodyDict setObject:segment.text forKey:@"postBody"];
     [segmentPostBodyDict setObject:[userDefaults stringForKey:@"username"] forKey:@"author"];
     [segmentPostBodyDict setObject:segment.storyName forKey:@"storyName"];
-    [segmentPostBodyDict setObject: @"0" forKey:@"levelId"];
+    [segmentPostBodyDict setObject: @"1" forKey:@"levelId"];
     [segmentPostBodyDict setObject:segment.storyId forKey:@"storyId"];
     
     NSString *urlString = @"http://exquisite-prose.herokuapp.com/segments/new_segment";
