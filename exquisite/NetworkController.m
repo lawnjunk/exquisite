@@ -20,7 +20,7 @@
 
 -(NSString *)serverURLString{
   if (!_serverURLString) {
-    _serverURLString = @"10.97.110.240:3000";
+    _serverURLString = @"http://exquisite-prose.herokuapp.com";
   }
   return _serverURLString;
 }
@@ -127,7 +127,7 @@
   NSString *userName = currentUser.userName;
   
 
-  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"matt"];
+  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"phil"];
     NSLog(@"request string %@", urlString);
   //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
   //  urlString = [urlString stringByAppendingString:searchTerm];
@@ -160,9 +160,13 @@
           NSError *parseError;
           NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
           
+#warning Temporary fix to a sudden endpoint change
+          NSDictionary *tempDick = storyDictionary[@"user"];
+          
+          
           dispatch_async(dispatch_get_main_queue(), ^{
-            if (storyDictionary) {
-              completionHandler(storyDictionary,nil);
+            if (tempDick) {
+              completionHandler(tempDick,nil);
             } else {
               completionHandler(nil,@"Story could not be Serialized");
             }
