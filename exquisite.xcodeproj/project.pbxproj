@@ -89,6 +89,7 @@
 		64E283891A9EB819008511DF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		64FA58C71A9F9CDF00A11C35 /* UIColor+ColorPalet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorPalet.h"; sourceTree = "<group>"; };
 		64FA58C81A9F9CDF00A11C35 /* UIColor+ColorPalet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorPalet.m"; sourceTree = "<group>"; };
+		64FA58CA1A9FB97C00A11C35 /* menuPressedDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = menuPressedDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +150,7 @@
 				55C7907B1A9D5DE4002567A3 /* SwipeShredzViewController.h */,
 				55C7907C1A9D5DE4002567A3 /* SwipeShredzViewController.m */,
 				55154CB01A9BD7510083141C /* TimeLineViewController.h */,
+				64FA58CA1A9FB97C00A11C35 /* menuPressedDelegate.h */,
 				64FA58C71A9F9CDF00A11C35 /* UIColor+ColorPalet.h */,
 				64FA58C81A9F9CDF00A11C35 /* UIColor+ColorPalet.m */,
 				55154CB11A9BD7510083141C /* TimeLineViewController.m */,
