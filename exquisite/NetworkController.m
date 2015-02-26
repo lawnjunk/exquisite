@@ -68,7 +68,7 @@
     [userDefaults synchronize];
 }
 
--(void)fetchStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler {
+-(void)fetchRandomStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler {
   
   NSString *urlString = [NSString stringWithFormat:@"%@/story/", self.serverURLString];
   

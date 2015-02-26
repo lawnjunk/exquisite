@@ -12,15 +12,12 @@
 @interface NetworkController : NSObject
 
 +(id)sharedService;
-
 -(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd;
 
--(void)fetchStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
-
+-(void)fetchRandomStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
 -(void)fetchStoryWithIdentifier:(NSString * )storyID withCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
 
--(void)fetchCompletedStoriesWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler;
-
+-(void)fetchStoriesForBrowserWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler;
 -(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler;
 
 @end

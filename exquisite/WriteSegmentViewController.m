@@ -36,7 +36,8 @@
         [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
     }
     
-    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
+    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
+//    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 //        NSLog(@"whatttt the fuuuuuuk are we dooing");
 //        NSLog(@"%@ thesse results", results);
         self.currentStory = [[Story alloc] initWithJSONData:results];
@@ -47,7 +48,7 @@
     
     self.lastSegment = [self.currentStory getLastSegment];
     NSLog(@"last seg text: %@", self.lastSegment.text);
-    self.initialFragment = [[NSString alloc] initWithFormat:@"%@ ", self.lastSegment.text];
+    self.initialFragment = self.lastSegment.text;
     
     self.initialFragmentLength = self.initialFragment.length;
     
