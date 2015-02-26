@@ -7,6 +7,7 @@
 //
 
 #import "TimeLineViewController.h"
+#import "TimelineTableViewCell.h"
 #import "NetworkController.h"
 #import "Segment.h"
 
@@ -17,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *numberOfSegments;
 
 
-@property (strong, nonatomic) IBOutlet UIImageView *avatarImage;
+//@property (strong, nonatomic) IBOutlet UIImageView *avatarImage;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property(strong, nonatomic) NetworkController *networkController;
@@ -33,7 +34,10 @@
   
   self.tableView.dataSource = self;
   
-  self.avatarImage.backgroundColor = [UIColor blackColor];
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 100;
+  
+//  self.avatarImage.backgroundColor = [UIColor blackColor];
   
   self.networkController = [NetworkController sharedService];
   
@@ -62,9 +66,9 @@
   [super viewDidAppear:animated];
   
   //SETUP AVATAR IMAGE:
-  self.avatarImage.layer.cornerRadius = 45.0;
-  self.avatarImage.layer.borderWidth = 5.0;
-  self.avatarImage.layer.borderColor = [[UIColor darkGrayColor]CGColor];
+//  self.avatarImage.layer.cornerRadius = 45.0;
+//  self.avatarImage.layer.borderWidth = 5.0;
+//  self.avatarImage.layer.borderColor = [[UIColor darkGrayColor]CGColor];
   
 //  self.offSetHeaderStop = 40.0;
 //  self.offsetBLabelHeader = 95.0;
@@ -186,22 +190,32 @@
 
 //MARK: TableView DataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+  TimelineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
-  if(self.allPosts != nil){
-    Segment *currentSegment = self.allPosts[indexPath.row];
-    cell.textLabel.text = currentSegment.text;
-    NSLog(@"%@",currentSegment.text);
-  }
+//  if(self.allPosts != nil){
+//    
+//    Segment *currentSegment = self.allPosts[indexPath.row];
+//    cell.storySegmentText.text = currentSegment.text;
+//    NSLog(@"%@",currentSegment.text);
+//  }
+//  else{
+    //this is just for test reasons
+  
+    cell.storyTitleLabel.text = @"Never Again";
+    cell.storySegmentText.text = @"this is just a test to see haosidjlkhadghfakjhsdflkjhweopihjasdf;lkhj lkajsdf;ljk ;lkajsd;flkj ;lkajsdf;lkjasd ;lkajsdf;lkj ";
+    cell.dateLabel.text = @"2/15/14";
+  
+  [cell updateConstraintsIfNeeded];
+//  }
   
   return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   if (self.allPosts == nil) {
-    return 0;
+    return 10;
   }
-  return self.allPosts.count;
+  return 10;
 }
 
 
