@@ -12,4 +12,5 @@
 @interface Level : NSObject
 @property(strong, nonatomic) NSArray *segments;
 -(instancetype)initWithArray:(NSArray *) levelArray;
+-(instancetype)init ;
 @end

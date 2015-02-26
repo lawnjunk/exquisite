@@ -299,8 +299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEB-CW-i8G">
-                                <rect key="frame" x="0.0" y="-119" width="600" height="241"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEB-CW-i8G">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="241" id="yb6-kF-nC5"/>
@@ -309,26 +308,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPe-dw-qoB">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="YAB-ea-6BU"/>
-                                    <constraint firstAttribute="height" constant="128" id="bE0-rW-IhZ"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaU-Tz-zGH">
-                                <rect key="frame" x="277" y="372" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="8uf-8L-XdP" kind="show" identifier="SHOW_READ_FROM_WRITE" id="ntg-xh-Qgn"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxd-NF-xAm">
                                 <rect key="frame" x="16" y="562" width="69" height="30"/>
                                 <constraints>
@@ -348,19 +327,39 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-Nj-nvn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <color key="backgroundColor" red="0.54117647059999996" green="0.74509803919999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ec5-Vm-8sr"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whB-5T-6wW">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="LEB-CW-i8G" firstAttribute="top" secondItem="Li0-Nj-nvn" secondAttribute="top" id="1Fa-of-StD"/>
+                            <constraint firstItem="whB-5T-6wW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="3Fs-SK-RmI"/>
+                            <constraint firstItem="whB-5T-6wW" firstAttribute="top" secondItem="Li0-Nj-nvn" secondAttribute="bottom" id="9wB-zL-4Qw"/>
                             <constraint firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-119" id="AuC-J7-aUH"/>
-                            <constraint firstAttribute="centerY" secondItem="UPe-dw-qoB" secondAttribute="centerY" id="D9O-iU-sNP"/>
+                            <constraint firstItem="whB-5T-6wW" firstAttribute="leading" secondItem="LEB-CW-i8G" secondAttribute="trailing" id="Kxw-d8-03b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="whB-5T-6wW" secondAttribute="trailing" constant="-16" id="LnP-yu-qH6"/>
                             <constraint firstItem="DTv-Ka-C1x" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RWr-YE-OaW"/>
+                            <constraint firstItem="Li0-Nj-nvn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="TjL-dg-23U"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DTv-Ka-C1x" secondAttribute="bottom" constant="8" id="WrZ-yh-Lh6"/>
                             <constraint firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wuy-Tp-usD"/>
-                            <constraint firstAttribute="centerX" secondItem="UPe-dw-qoB" secondAttribute="centerX" id="bMk-GD-okc"/>
-                            <constraint firstAttribute="centerX" secondItem="VaU-Tz-zGH" secondAttribute="centerX" id="fUh-qP-ULT"/>
-                            <constraint firstItem="VaU-Tz-zGH" firstAttribute="top" secondItem="UPe-dw-qoB" secondAttribute="bottom" constant="8" id="mGF-SJ-UWn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="whB-5T-6wW" secondAttribute="bottom" id="a2C-9R-sKD"/>
+                            <constraint firstItem="Li0-Nj-nvn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="m7a-NC-eg0"/>
                             <constraint firstItem="Oxd-NF-xAm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pbB-m7-4jh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Oxd-NF-xAm" secondAttribute="bottom" constant="8" id="poj-aG-iMs"/>
+                            <constraint firstItem="LEB-CW-i8G" firstAttribute="leading" secondItem="Li0-Nj-nvn" secondAttribute="leading" id="pr3-sm-UrR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Li0-Nj-nvn" secondAttribute="trailing" constant="-16" id="xWm-3H-l6S"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -368,15 +367,19 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="whB-5T-6wW" id="su8-kh-nai"/>
+                        <segue destination="8uf-8L-XdP" kind="show" identifier="SHOW_READ_FROM_WRITE" id="sM1-ZJ-IvS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="668"/>
+            <point key="canvasLocation" x="862" y="668"/>
         </scene>
         <!--Read Story View Controller-->
         <scene sceneID="GdZ-Gf-x3P">
             <objects>
-                <viewController id="8uf-8L-XdP" customClass="ReadStoryViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="READ_VC" id="8uf-8L-XdP" customClass="ReadStoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nop-5Q-ih2"/>
                         <viewControllerLayoutGuide type="bottom" id="IOX-Xi-whc"/>
