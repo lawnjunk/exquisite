@@ -105,7 +105,7 @@
     
     
     [newSegDictionary setObject:[NSNumber numberWithInteger:self.levelId] forKey:@"levelId"];
-    [newSegDictionary setObject:self.username forKey:@"author"];
+    //[newSegDictionary setObject:self.username forKey:@"author"];
     [newSegDictionary setObject:segmentText forKey:@"postBody"];
     
     NSLog(@"last segment.storyID %@", self.lastSegment.storyId);
