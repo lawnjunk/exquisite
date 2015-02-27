@@ -17,7 +17,7 @@
 
 @property(strong, nonatomic) NetworkController *networkController;
 
-@property(strong, nonatomic) NSArray *allStoryHeaders;
+@property(strong, nonatomic) NSArray *allStorys;
 
 @end
 
@@ -25,20 +25,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
   self.networkController = [NetworkController sharedService];
   
   [self.networkController fetchStoriesForBrowserWithCompletionHandler:^(NSArray *results, NSString *error) {
     NSLog(@"The New Fetch Worked");
-    NSLog(@"Results For user timeline fetch: %@", results);
+    NSLog(@"Results For story browser fetch: %@", results);
     
-    NSMutableArray *storyHeaders = [[NSMutableArray alloc] init];
-    for(NSDictionary *currentStoryHeader in results){
-      NSDictionary *currentStorySegment = currentStoryHeader[@"firstSegment"];
-      NSString *storyHeader = currentStorySegment[@"text"];
-      [storyHeaders addObject:storyHeader];
-    }
-    self.allStoryHeaders = storyHeaders;
+//    NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
+//    
+//    for(NSDictionary *storyDictionary in results){
+//    NSString *author = storyDictionary[@"author"];
+//    NSString *name = storyDictionary[@"name"];
+//      
+//    }
+    
+
+    
     [self.tableView reloadData];
 
   }];
@@ -50,37 +52,39 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated{
+  for(UIView *view in self.tabBarController.view.subviews)
+  {
+    if([view isKindOfClass:[UITabBar class]])
+    {
+      view.hidden = true;
+    }
+  }
 }
 
 //MARK: TableView DataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
-//  if(self.allStoryHeaders != nil){
-//    NSString *currentStoryHeader = self.allStoryHeaders[indexPath.row];
+  if(self.allStorys != nil){
+    NSString *currentStory = self.allStorys[indexPath.row];
 //    cell.textLabel.text = currentStoryHeader;
-//  }
-  
-  cell.storyTitle.text = @"Gnar";
-  cell.storySegment.text = @"l;akjsd;lfkjkajhkjh ;lkjasdfpon lkjasl;dkjf;lkjasdf ;lkajsdf ;lkjasdf ;ljasdf;lkjweohwovkjn kf;jgp ovkngopwklh lkd ;lkasdk ;hwhfu";
-  cell.dateLabel.text = @"2/15/15";
-  
-  
-  
+  }
+
   return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   
-//  if (self.allStoryHeaders !=nil) {
-//    return self.allStoryHeaders.count;
-//  }
+  if (self.allStorys !=nil) {
+    return self.allStorys.count;
+  }
   
-  return 25;
+  return 5;
   
+}
+- (IBAction)writeStoryButtonPushed:(UIButton *)sender {
+  [self.delegate writeStoryButtonPushed];
 }
 
 #pragma turn of the time/battery status bar

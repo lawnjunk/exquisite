@@ -101,7 +101,7 @@
 
     NSMutableDictionary *segmentPostBodyDict = [[NSMutableDictionary alloc]init];
     [segmentPostBodyDict setObject:segment.text forKey:@"postBody"];
-    [segmentPostBodyDict setObject:[userDefaults stringForKey:@"username"] forKey:@"author"];
+    //[segmentPostBodyDict setObject:[userDefaults stringForKey:@"username"] forKey:@"author"];
     [segmentPostBodyDict setObject:segment.storyName forKey:@"storyName"];
     [segmentPostBodyDict setObject: @"0" forKey:@"levelId"];
     [segmentPostBodyDict setObject:segment.storyId forKey:@"storyId"];
@@ -288,9 +288,9 @@
 -(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler {
   
   NSString *userName = currentUser.userName;
-  
 
-  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"phil"];
+//  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"booger"];
+  NSString *urlString = @"http://exquisite-prose.herokuapp.com/user/booger";
     NSLog(@"request string %@", urlString);
   //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
   //  urlString = [urlString stringByAppendingString:searchTerm];
@@ -323,13 +323,15 @@
           NSError *parseError;
           NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
           
-#warning Temporary fix to a sudden endpoint change
+          NSLog(@"fetch booger results %@", httpResponse.description);
+          
+//#warning Temporary fix to a sudden endpoint change
           NSDictionary *tempDick = storyDictionary[@"user"];
           
           
           dispatch_async(dispatch_get_main_queue(), ^{
             if (tempDick) {
-              completionHandler(tempDick,nil);
+              completionHandler(storyDictionary,nil);
             } else {
               completionHandler(nil,@"Story could not be Serialized");
             }
@@ -348,7 +350,7 @@
 
 -(void)fetchStoriesForBrowserWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler {
   
-  NSString *urlString = [NSString stringWithFormat:@"%@/story/", self.serverURLString];
+  NSString *urlString = [NSString stringWithFormat:@"%@/story/dev/allincomplete", self.serverURLString];
   
   //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
   //  urlString = [urlString stringByAppendingString:searchTerm];
@@ -379,6 +381,8 @@
           
           NSError *parseError;
           NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+          
+          NSLog(@"%@",storyDictionary.description);
           
           dispatch_async(dispatch_get_main_queue(), ^{
             if (storyDictionary) {
