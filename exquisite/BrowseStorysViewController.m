@@ -31,15 +31,13 @@
     NSLog(@"The New Fetch Worked");
     NSLog(@"Results For story browser fetch: %@", results);
     
-//    NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
-//    
-//    for(NSDictionary *storyDictionary in results){
-//    NSString *author = storyDictionary[@"author"];
-//    NSString *name = storyDictionary[@"name"];
-//      
-//    }
+    NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
     
-
+    for(NSDictionary *storyDictionary in results){
+      [allStorySegments addObject:storyDictionary];
+    }
+    
+    self.allStorys = allStorySegments;
     
     [self.tableView reloadData];
 
@@ -67,8 +65,12 @@
   StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
   if(self.allStorys != nil){
-    NSString *currentStory = self.allStorys[indexPath.row];
-//    cell.textLabel.text = currentStoryHeader;
+    NSDictionary *currentStory = self.allStorys[indexPath.row];
+    cell.storySegment.text = currentStory[@"author"];
+    cell.storyTitle.text = currentStory[@"name"];
+    
+    cell.dateLabel.text = currentStory[@"createdAt"];
+
   }
 
   return cell;

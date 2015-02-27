@@ -78,7 +78,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
-
+  [self.tableView reloadData];
 }
 
 //MARK: TableView DataSource
@@ -91,14 +91,7 @@
     cell.storySegmentText.text = currentSegment.text;
     cell.dateLabel.text = currentSegment.createdAt;
   }
-    //this is just for test reasons
-//  
-//    cell.storyTitleLabel.text = @"Never Again";
-//    cell.storySegmentText.text = @"this is just a test to see haosidjlkhadghfakjhsdflkjhweopihjasdf;lkhj lkajsdf;ljk ;lkajsd;flkj ;lkajsdf;lkjasd ;lkajsdf;lkj ";
-//    cell.dateLabel.text = @"2/15/14";
-  
   [cell updateConstraintsIfNeeded];
-//  }
   
   return cell;
 }
