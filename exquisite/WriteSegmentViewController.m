@@ -25,27 +25,7 @@
 @implementation WriteSegmentViewController
 -(void)viewWillAppear:(BOOL)animated{
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setObject:@"dug" forKey:@"username"];
-    [userDefaults synchronize];
-    NSString *defaultsUsername = [userDefaults objectForKey:@"username"];
-    if (!defaultsUsername){
-        NSLog(@"there was no username in userdfaults");
-//        [self.networkController createNewAccountWithUserName:@"grumbler" password:@"password" email:@"grumbler@slug.website" location:@"hereOrThere"  withCompletionHandler:^(NSString *token) {
-//            [userDefaults setObject:token forKey:@"username"];
-//        };
-//        self.username = [userDefaults objectForKey:@"username"];
-        
-        [self.networkController createNewAccountWithUserName:@"farrrt" password:@"password" email:@"nudedmyapp@sadfadfas()" location:@"nunyah" withCompletionHandler:^(NSString *token, NSString *username) {
-            NSLog(@"in the collback we get the username %@", username);
-            [userDefaults setObject:token forKey:@"token"];
-            [userDefaults synchronize];
-            self.username = username;
-        }];
-    } else {
-        NSLog(@"self.username is %@", self.username);
-        self.username = defaultsUsername;
-    }
+
     
     
 
@@ -78,7 +58,29 @@
     [self.textView setReturnKeyType:UIReturnKeyDone];
     self.networkController = [NetworkController sharedService];
     
-
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    //    [userDefaults setObject:@"dug" forKey:@"username"];
+    [userDefaults synchronize];
+    NSString *defaultsUsername = [userDefaults objectForKey:@"username"];
+    if (!defaultsUsername){
+        NSLog(@"there was no username in userdfaults");
+        //        [self.networkController createNewAccountWithUserName:@"grumbler" password:@"password" email:@"grumbler@slug.website" location:@"hereOrThere"  withCompletionHandler:^(NSString *token) {
+        //            [userDefaults setObject:token forKey:@"username"];
+        //        };
+        //        self.username = [userDefaults objectForKey:@"username"];
+        
+        
+//        [self performSegueWithIdentifier:@"show_login" sender:self];
+        //        [self.networkController createNewAccountWithUserName:@"farrrt" password:@"password" email:@"nudedmyapp@sadfadfas()" location:@"nunyah" withCompletionHandler:^(NSString *token, NSString *username) {
+        //            NSLog(@"in the collback we get the username %@", username);
+        //            [userDefaults setObject:token forKey:@"token"];
+        //            [userDefaults synchronize];
+        //            self.username = username;
+        //        }];
+    } else {
+        NSLog(@"self.username is %@", self.username);
+        self.username = defaultsUsername;
+    }
 //    if (self.username == nil){
 //            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 //        self.username = [userDefaults objectForKey:@"username"];
