@@ -131,7 +131,7 @@
     [segmentPostBodyDict setObject:segment.text forKey:@"postBody"];
     NSString *usernameFromDefatuls = [userDefaults objectForKey:@"username"];
     NSLog(@"inside post segment usernameFromDefautls = %@", usernameFromDefatuls);
-    [segmentPostBodyDict setObject:@"garbal" forKey:@"author"];
+    [segmentPostBodyDict setObject:usernameFromDefatuls forKey:@"author"];
     [segmentPostBodyDict setObject:segment.storyName forKey:@"storyName"];
 //    [segmentPostBodyDict setOb:  segment.levelId forKey:@"levelId"];
     [segmentPostBodyDict setObject:[NSString stringWithFormat:@"%d", segment.levelId] forKey:@"levelId"];
