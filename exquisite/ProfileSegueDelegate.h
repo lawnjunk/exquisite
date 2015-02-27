@@ -1,5 +1,5 @@
 //
-//  menuPressedDelegate.h
+//  ProfileSegueDelegate.h
 //  exquisite
 //
 //  Created by Adam Wallraff on 2/26/15.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MenuPressedDelegate <NSObject>
+@protocol ProfileSegueDelegate <NSObject>
 
--(void)menuOptionSelected:(NSInteger)selectedRow;
+-(void)writeStoryButtonPushedinProfile;
 
 @end

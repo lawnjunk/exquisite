@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-#import "menuPressedDelegate.h"
+#import "ProfileSegueDelegate.h"
 
 @interface TimeLineViewController : UIViewController
 
-@property (weak,nonatomic) id<MenuPressedDelegate> delegate;
+@property(weak) id<ProfileSegueDelegate> delegate;
 
 @property(strong, nonatomic) User *currentUser;
 
