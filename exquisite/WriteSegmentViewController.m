@@ -23,7 +23,27 @@
 @end
 
 @implementation WriteSegmentViewController
+-(void)viewWillAppear:(BOOL)animated{
+//    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
+        [self.networkController fetchRandomStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 
+        NSLog(@"%@ thesse results", results);
+        
+        
+        self.currentStory = [[Story alloc] initWithJSONData:results];
+        self.lastSegment = [self.currentStory getLastSegment];
+        NSLog(@"last seg text: %@", self.lastSegment.text);
+        self.initialFragment = self.lastSegment.text;
+        
+        self.initialFragmentLength = self.initialFragment.length;
+        
+        //    NSLog(@"the inital %@", self.initialFragmentLength);
+        
+        self.textView.text = self.initialFragment;
+        //        NSLog(@"we just tried to init the current story %@", self.currentStory.title);
+        //        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.textView.delegate = self;
@@ -31,7 +51,7 @@
     self.networkController = [NetworkController sharedService];
     
     
-    
+
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 //    NSString *token = [userDefaults stringForKey:@"token"];
@@ -52,24 +72,7 @@
 //    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
 //    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 
-    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
-        
-        NSLog(@"%@ thesse results", results);
-        
-        
-        self.currentStory = [[Story alloc] initWithJSONData:results];
-        self.lastSegment = [self.currentStory getLastSegment];
-        NSLog(@"last seg text: %@", self.lastSegment.text);
-        self.initialFragment = self.lastSegment.text;
-        
-        self.initialFragmentLength = self.initialFragment.length;
-        
-        //    NSLog(@"the inital %@", self.initialFragmentLength);
-        
-        self.textView.text = self.initialFragment;
-//        NSLog(@"we just tried to init the current story %@", self.currentStory.title);
-//        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
-    }];
+
     
     
 
@@ -104,7 +107,7 @@
     NSString *segmentText = [ NSString stringWithFormat: @"%@ ", trimmedString];
     
     
-    [newSegDictionary setObject:[NSNumber numberWithInteger:self.levelId] forKey:@"levelId"];
+    [newSegDictionary setObject:[NSNumber numberWithInt:2] forKey:@"levelId"];
     [newSegDictionary setObject:self.username forKey:@"author"];
     [newSegDictionary setObject:segmentText forKey:@"postBody"];
     
@@ -119,8 +122,10 @@
 
     
     Segment *newSeg = [[Segment alloc] initWithDictionary:newSegDictionary];
-    [self.networkController postSegment:newSeg];
+//    [self.networkController postSegment:newSeg];
     [self.currentStory addSegment:newSeg];
+    NSLog(@"previous post was layer %ld, this one is layer %ld", self.currentStory.levels.count, [self.currentStory getLastSegment].levelId);
+    [self.networkController postSegment:self.currentStory.getLastSegment];
     [self performSegueWithIdentifier:@"SHOW_READ_FROM_WRITE" sender:self];
 }
 

@@ -103,7 +103,8 @@
     [segmentPostBodyDict setObject:segment.text forKey:@"postBody"];
     [segmentPostBodyDict setObject:[userDefaults stringForKey:@"username"] forKey:@"author"];
     [segmentPostBodyDict setObject:segment.storyName forKey:@"storyName"];
-    [segmentPostBodyDict setObject: @"1" forKey:@"levelId"];
+//    [segmentPostBodyDict setOb:  segment.levelId forKey:@"levelId"];
+    [segmentPostBodyDict setObject:[NSString stringWithFormat:@"%d", segment.levelId] forKey:@"levelId"];
     [segmentPostBodyDict setObject:segment.storyId forKey:@"storyId"];
     
     NSString *urlString = @"http://exquisite-prose.herokuapp.com/segments/new_segment";
@@ -154,7 +155,7 @@
 
 -(void)fetchRandomStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler {
   
-  NSString *urlString = [NSString stringWithFormat:@"%@/story/", self.serverURLString];
+  NSString *urlString = [NSString stringWithFormat:@"%@/story/incomplete/random", self.serverURLString];
   
 //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
 //  urlString = [urlString stringByAppendingString:searchTerm];
