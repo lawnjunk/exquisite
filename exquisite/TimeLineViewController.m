@@ -46,13 +46,14 @@
     NSLog(@"Results For user timeline fetch: %@", results);
     
     NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
-    NSString *screenName = results[@"screenname"];
-    NSString *location = results[@"location"];
+    NSDictionary *userDictionary = results[@"user"];
+    NSString *screenName = userDictionary[@"screenname"];
+    NSString *location = userDictionary[@"location"];
     self.screenName.text = screenName;
     self.userName.text = screenName;
     self.locationLabel.text = location;
     
-    NSArray *posts = results[@"posts"];
+    NSArray *posts = results[@"segments"];
     for(NSDictionary *currentSegmentDictionary in posts){
       Segment *seg = [[Segment alloc] initWithDictionary:currentSegmentDictionary];
       [allStorySegments addObject:seg];
@@ -65,30 +66,36 @@
   }];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+  for(UIView *view in self.tabBarController.view.subviews)
+  {
+    if([view isKindOfClass:[UITabBar class]])
+    {
+      view.hidden = true;
+    }
+  }
+}
+
 -(void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
 
 }
 
-
-
 //MARK: TableView DataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   TimelineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
   
-//  if(self.allPosts != nil){
-//    
-//    Segment *currentSegment = self.allPosts[indexPath.row];
-//    cell.storySegmentText.text = currentSegment.text;
-//    NSLog(@"%@",currentSegment.text);
-//  }
-//  else{
-  
+  if(self.allPosts != nil){
+    Segment *currentSegment = self.allPosts[indexPath.row];
+    cell.storyTitleLabel.text = currentSegment.storyName;
+    cell.storySegmentText.text = currentSegment.text;
+    cell.dateLabel.text = currentSegment.createdAt;
+  }
     //this is just for test reasons
-  
-    cell.storyTitleLabel.text = @"Never Again";
-    cell.storySegmentText.text = @"this is just a test to see haosidjlkhadghfakjhsdflkjhweopihjasdf;lkhj lkajsdf;ljk ;lkajsd;flkj ;lkajsdf;lkjasd ;lkajsdf;lkj ";
-    cell.dateLabel.text = @"2/15/14";
+//  
+//    cell.storyTitleLabel.text = @"Never Again";
+//    cell.storySegmentText.text = @"this is just a test to see haosidjlkhadghfakjhsdflkjhweopihjasdf;lkhj lkajsdf;ljk ;lkajsd;flkj ;lkajsdf;lkjasd ;lkajsdf;lkj ";
+//    cell.dateLabel.text = @"2/15/14";
   
   [cell updateConstraintsIfNeeded];
 //  }
@@ -100,9 +107,13 @@
   if (self.allPosts == nil) {
     return 10;
   }
-  return 10;
+  return self.allPosts.count;
 }
 
+- (IBAction)writeButtonPressed:(UIButton *)sender {
+  [self.delegate writeStoryButtonPushedinProfile];
+
+}
 
 #pragma turn of the time/battery status bar
 -(BOOL)prefersStatusBarHidden {

@@ -32,6 +32,7 @@
 		644CBF7D1A9C098E00CE9FF6 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF7C1A9C098E00CE9FF6 /* Segment.m */; };
 		64924D131A9BB086008E3C93 /* devNotes in Resources */ = {isa = PBXBuildFile; fileRef = 64924D121A9BB086008E3C93 /* devNotes */; };
 		64E2838A1A9EB819008511DF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E283891A9EB819008511DF /* LoginViewController.m */; };
+		64FA58C91A9F9CDF00A11C35 /* UIColor+ColorPalet.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C81A9F9CDF00A11C35 /* UIColor+ColorPalet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,10 @@
 		64924D121A9BB086008E3C93 /* devNotes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = devNotes; sourceTree = "<group>"; };
 		64E283881A9EB819008511DF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		64E283891A9EB819008511DF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		64FA58C71A9F9CDF00A11C35 /* UIColor+ColorPalet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorPalet.h"; sourceTree = "<group>"; };
+		64FA58C81A9F9CDF00A11C35 /* UIColor+ColorPalet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorPalet.m"; sourceTree = "<group>"; };
+		64FA58CB1AA0038100A11C35 /* bowserSegueProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bowserSegueProtocol.h; sourceTree = "<group>"; };
+		64FA58CC1AA0046200A11C35 /* ProfileSegueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSegueDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +155,10 @@
 				55154CAE1A9BD7190083141C /* WriteSegmentViewController.m */,
 				55C7907B1A9D5DE4002567A3 /* SwipeShredzViewController.h */,
 				55C7907C1A9D5DE4002567A3 /* SwipeShredzViewController.m */,
+				64FA58CC1AA0046200A11C35 /* ProfileSegueDelegate.h */,
+				64FA58CB1AA0038100A11C35 /* bowserSegueProtocol.h */,
+				64FA58C71A9F9CDF00A11C35 /* UIColor+ColorPalet.h */,
+				64FA58C81A9F9CDF00A11C35 /* UIColor+ColorPalet.m */,
 				55154CB01A9BD7510083141C /* TimeLineViewController.h */,
 				55154CB11A9BD7510083141C /* TimeLineViewController.m */,
 				55154CB31A9BD76B0083141C /* BrowseStorysViewController.h */,

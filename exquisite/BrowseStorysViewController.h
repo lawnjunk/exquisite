@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "bowserSegueProtocol.h"
 
 @interface BrowseStorysViewController : UIViewController
+
+@property(weak) id<bowserSegueProtocol> delegate;
 
 @end
