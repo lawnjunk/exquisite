@@ -68,8 +68,6 @@
         //            [userDefaults setObject:token forKey:@"username"];
         //        };
         //        self.username = [userDefaults objectForKey:@"username"];
-        
-        
 //        [self performSegueWithIdentifier:@"show_login" sender:self];
         //        [self.networkController createNewAccountWithUserName:@"farrrt" password:@"password" email:@"nudedmyapp@sadfadfas()" location:@"nunyah" withCompletionHandler:^(NSString *token, NSString *username) {
         //            NSLog(@"in the collback we get the username %@", username);
@@ -159,6 +157,7 @@
 //    [self.networkController postSegment:self.currentStory.getLastSegment];
     [self.networkController postSegment:self.currentStory.getLastSegment withUserName:self.username];
     [self performSegueWithIdentifier:@"SHOW_READ_FROM_WRITE" sender:self];
+
 }
 
 

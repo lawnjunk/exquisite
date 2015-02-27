@@ -166,10 +166,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="MZT-T9-G7n" kind="show" identifier="SHOWSHWIPESHREDZ" id="A7g-1M-LQf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvG-kK-Kga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="-180"/>
+            <point key="canvasLocation" x="957" y="-200"/>
         </scene>
         <!--Swipe Shredz View Controller-->
         <scene sceneID="Udb-sP-ZRf">
@@ -267,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="629"/>
+            <point key="canvasLocation" x="1697" y="626"/>
         </scene>
         <!--Read Story View Controller-->
         <scene sceneID="GdZ-Gf-x3P">
