@@ -14,7 +14,7 @@
 @property(nonatomic) int storyID;
 @property(strong, nonatomic) NSString *title;
 @property(strong, nonatomic) NSDate *createdAt;
-@property(strong, nonatomic) NSArray *levels;
+@property(strong, nonatomic) NSMutableArray *levels;
 
 -(instancetype)initWithJSONData:(NSDictionary *)jsonDataDictionary;
 -(Segment *)getLastSegment;

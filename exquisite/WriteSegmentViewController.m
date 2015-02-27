@@ -23,37 +23,24 @@
 @end
 
 @implementation WriteSegmentViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.textView.delegate = self;
-    [self.textView setReturnKeyType:UIReturnKeyDone];
-    self.networkController = [NetworkController sharedService];
-    
-    
-    
+-(void)viewWillAppear:(BOOL)animated{
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    NSString *token = [userDefaults stringForKey:@"token"];
-//    if (!token) {
-//        #warning we shut be presenting modal a login controller
-//        NSLog(@"there was no token");
-////        [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
-//    }
-    
-    NSString *username = [userDefaults stringForKey:@"username"];
-    if (!username){
+//    [userDefaults setObject:@"booger" forKey:@"username"];
+    NSString *defaultsUsername = [userDefaults objectForKey:@"username"];
+    if (!defaultsUsername){
         NSLog(@"there was no username in userdfaults");
-        [self.networkController createNewAccountWithUserName:@"booger" password:@"password" email:@"booger@booger.net" location:@"hereOrThere"];
+        [self.networkController createNewAccountWithUserName:@"hawtie" password:@"password" email:@"hawtie@slugz.website" location:@"hereOrThere" ];
+        self.username = [userDefaults objectForKey:@"username"];
     } else {
-        self.username = username;
+        NSLog(@"self.username is %@", self.username);
+        self.username = defaultsUsername;
     }
-    
-//    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
-//    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 
-    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
-        
+    
+//    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
+        [self.networkController fetchRandomStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
+
         NSLog(@"%@ thesse results", results);
         
         
@@ -67,9 +54,41 @@
         //    NSLog(@"the inital %@", self.initialFragmentLength);
         
         self.textView.text = self.initialFragment;
-//        NSLog(@"we just tried to init the current story %@", self.currentStory.title);
-//        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
+        //        NSLog(@"we just tried to init the current story %@", self.currentStory.title);
+        //        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
     }];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.textView.delegate = self;
+    [self.textView setReturnKeyType:UIReturnKeyDone];
+    self.networkController = [NetworkController sharedService];
+    
+
+    if (self.username == nil){
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        self.username = [userDefaults objectForKey:@"username"];
+    }
+
+
+    
+//    NSString *token = [userDefaults stringForKey:@"token"];
+//    if (!token) {
+//        #warning we shut be presenting modal a login controller
+//        NSLog(@"there was no token");
+////        [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
+//    }
+    
+
+    
+    
+    self.username = @"booger";
+//    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
+//    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
+
+
     
     
 
@@ -104,8 +123,8 @@
     NSString *segmentText = [ NSString stringWithFormat: @"%@ ", trimmedString];
     
     
-    [newSegDictionary setObject:[NSNumber numberWithInteger:self.levelId] forKey:@"levelId"];
-    //[newSegDictionary setObject:self.username forKey:@"author"];
+    [newSegDictionary setObject:[NSNumber numberWithInt:2] forKey:@"levelId"];
+    [newSegDictionary setObject:self.username forKey:@"author"];
     [newSegDictionary setObject:segmentText forKey:@"postBody"];
     
     NSLog(@"last segment.storyID %@", self.lastSegment.storyId);
@@ -119,8 +138,10 @@
 
     
     Segment *newSeg = [[Segment alloc] initWithDictionary:newSegDictionary];
-    [self.networkController postSegment:newSeg];
+//    [self.networkController postSegment:newSeg];
     [self.currentStory addSegment:newSeg];
+    NSLog(@"previous post was layer %ld, this one is layer %ld", self.currentStory.levels.count, [self.currentStory getLastSegment].levelId);
+    [self.networkController postSegment:self.currentStory.getLastSegment];
     [self performSegueWithIdentifier:@"SHOW_READ_FROM_WRITE" sender:self];
 }
 

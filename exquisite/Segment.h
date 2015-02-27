@@ -12,11 +12,11 @@
 
 @interface Segment : NSObject
 -(instancetype)initWithDictionary:(NSDictionary *) segDictionary;
-@property(strong, nonatomic) NSString *createdAt;
+@property (strong, nonatomic) NSString *createdAt;
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) NSString *segmentID;
-@property(strong, nonatomic) NSString *author;
-@property(nonatomic) NSInteger levelId;
-@property(strong,nonatomic) NSString *storyId;
-@property(strong,nonatomic) NSString *storyName;
+@property (strong, nonatomic) NSString *author;
+@property (nonatomic) int levelId;
+@property (strong, nonatomic) NSString *storyId;
+@property (strong, nonatomic) NSString *storyName;
 @end
