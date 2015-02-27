@@ -385,7 +385,7 @@
 
 -(void)fetchStoriesForBrowserWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler {
   
-  NSString *urlString = [NSString stringWithFormat:@"%@/story/dev/allincomplete", self.serverURLString];
+  NSString *urlString = [NSString stringWithFormat:@"%@/story/dev/allcomplete", self.serverURLString];
   
   //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
   //  urlString = [urlString stringByAppendingString:searchTerm];
