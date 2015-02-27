@@ -32,7 +32,6 @@
 		644CBF7D1A9C098E00CE9FF6 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 644CBF7C1A9C098E00CE9FF6 /* Segment.m */; };
 		64924D131A9BB086008E3C93 /* devNotes in Resources */ = {isa = PBXBuildFile; fileRef = 64924D121A9BB086008E3C93 /* devNotes */; };
 		64E2838A1A9EB819008511DF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E283891A9EB819008511DF /* LoginViewController.m */; };
-		64FA58C91A9F9CDF00A11C35 /* UIColor+ColorPalet.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FA58C81A9F9CDF00A11C35 /* UIColor+ColorPalet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +256,7 @@
 				TargetAttributes = {
 					55154C801A9BAD420083141C = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2558H3Z4V9;
 					};
 					55154C9C1A9BAD420083141C = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -453,6 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = exquisite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -463,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = exquisite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

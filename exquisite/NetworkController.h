@@ -13,12 +13,12 @@
 @interface NetworkController : NSObject
 
 +(id)sharedService;
--(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location ;
+-(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location withCompletionHandler: (void (^)(NSString *token, NSString *username)) completionHandler ;
 
 -(void)fetchRandomStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
 -(void)fetchStoryWithIdentifier:(NSString * )storyID withCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
 
 -(void)fetchStoriesForBrowserWithCompletionHandler: (void (^)(NSArray *results, NSString *error)) completionHandler;
 -(void)fetchTimelineForUser:(User *)currentUser withCompletionHandler:(void (^)(NSDictionary *results, NSString *error)) completionHandler;
--(void)postSegment:(Segment *)segment;
+-(void)postSegment:(Segment *)segment withUserName:(NSString * )username;
 @end

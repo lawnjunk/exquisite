@@ -18,9 +18,11 @@
     
     NSMutableArray *tempLevels = [[NSMutableArray alloc] init];
     for (NSArray* level in jsonDataDictionary[@"levels"]) {
+        if (level != nil){
         NSLog(@"level be makin now");
         Level *newLevel = [[Level alloc] initWithArray:level];
         [tempLevels addObject:newLevel];
+        }
     }
     
     self.levels = tempLevels;
@@ -56,7 +58,8 @@
 //    
     Level *lastLevel = self.levels.lastObject;
     NSLog(@" last level segemnet count %lu",lastLevel.segments.count);
-    if (lastLevel.segments.count >= 3 || self.levels.count == 1) {
+//    if (lastLevel.segments.count >= 3 || self.levels.count == 1) {
+    if (true) {
         NSLog(@"we are gunna make a new level");
 //        NSMutableArray *newMutableLevelArray = [[NSMutableArray alloc]initWithArray: self.levels];
 //        NSMutableArray *newSegArray = [[NSMutableArray alloc] init];
@@ -69,7 +72,7 @@
         
         NSMutableArray *newSegArray = [[NSMutableArray alloc]init];
         Segment *segToAppend = newSegment;
-        segToAppend.levelId = 2;
+        segToAppend.levelId = (int) self.levels.count;
         [newSegArray addObject:segToAppend];
         
         
@@ -85,7 +88,7 @@
     } else {
         NSLog(@"we are appending new seg to same level");
         NSMutableArray *newSegmentArray = [[NSMutableArray alloc] initWithArray:lastLevel.segments];
-        newSegment.levelId = (int) self.levels.count -1;
+        newSegment.levelId = (int) self.levels.count;
         [newSegmentArray addObject:newSegment];
         lastLevel.segments = newSegmentArray;
     }

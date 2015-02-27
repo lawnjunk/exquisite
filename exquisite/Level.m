@@ -14,11 +14,12 @@
 //    NSLog(@"what du length, %d", levelArray.count);
     NSMutableArray* tempArray = [[NSMutableArray alloc] init];
     for (NSDictionary* segDictionary in levelArray ) {
-        
-        NSLog(@"segdict author %@", segDictionary[@"author"]);
-        Segment *newSegment = [[Segment alloc] initWithDictionary:segDictionary];
-        NSLog(@"seg user %@", segDictionary[@"text"]);
-        [tempArray addObject: newSegment];
+        if (segDictionary != nil){
+            NSLog(@"segdict author %@", segDictionary[@"author"]);
+            Segment *newSegment = [[Segment alloc] initWithDictionary:segDictionary];
+            NSLog(@"seg user %@", segDictionary[@"text"]);
+            [tempArray addObject: newSegment];
+        }
     }
     self.segments = tempArray;
 
