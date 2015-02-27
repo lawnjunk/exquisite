@@ -24,6 +24,20 @@
 
 @implementation WriteSegmentViewController
 -(void)viewWillAppear:(BOOL)animated{
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults setObject:@"booger" forKey:@"username"];
+    NSString *defaultsUsername = [userDefaults objectForKey:@"username"];
+    if (!defaultsUsername){
+        NSLog(@"there was no username in userdfaults");
+        [self.networkController createNewAccountWithUserName:@"hawtie" password:@"password" email:@"hawtie@slugz.website" location:@"hereOrThere" ];
+        self.username = [userDefaults objectForKey:@"username"];
+    } else {
+        NSLog(@"self.username is %@", self.username);
+        self.username = defaultsUsername;
+    }
+
+    
 //    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
         [self.networkController fetchRandomStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 
@@ -44,16 +58,22 @@
         //        NSLog(@"we this is level 0 %@ ", self.currentStory.levels);
     }];
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.textView.delegate = self;
     [self.textView setReturnKeyType:UIReturnKeyDone];
     self.networkController = [NetworkController sharedService];
     
-    
+
+    if (self.username == nil){
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        self.username = [userDefaults objectForKey:@"username"];
+    }
+
 
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 //    NSString *token = [userDefaults stringForKey:@"token"];
 //    if (!token) {
 //        #warning we shut be presenting modal a login controller
@@ -61,14 +81,10 @@
 ////        [self.networkController createNewAccountWithUserName:@"lulwat" password:@"passwordJokes"];
 //    }
     
-    NSString *username = [userDefaults stringForKey:@"username"];
-    if (!username){
-        NSLog(@"there was no username in userdfaults");
-        [self.networkController createNewAccountWithUserName:@"booger" password:@"password" email:@"booger@booger.net" location:@"hereOrThere"];
-    } else {
-        self.username = username;
-    }
+
     
+    
+    self.username = @"booger";
 //    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
 //    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 

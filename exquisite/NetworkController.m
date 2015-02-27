@@ -53,6 +53,10 @@
 //  
 //}
 
+
+//-(void)createNewAccountWithUserName:(NSString *)username password:(NSString *)passwd email:(NSString *)email location:(NSString *)location withCompletionHandler:(void (^)(NSString *))completionHandler {
+
+
 -(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location {
 
     NSMutableDictionary *createUserPostBodyDict = [[NSMutableDictionary alloc] init];
@@ -70,8 +74,10 @@
     [request setHTTPBody:postData];
     [request addValue:@"application/json" forHTTPHeaderField:@"content-type"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
     
+    NSLog(@"about to make anew user");
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSURLSessionTask *createAccountDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             NSLog(@"srry ther wes an errr creating user \n %@", error);
@@ -79,15 +85,18 @@
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             NSInteger statusCode = httpResponse.statusCode;
             
+            NSLog(@"status code for createing the user %lu", statusCode);
             switch (statusCode) {
                 case 200 ... 299: {
                     NSLog(@"statuscode for create user was %ld", (long)statusCode);
-                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
                     [userDefaults setObject:username forKey:@"username"];
+                    [userDefaults synchronize];
                     break;
                 }
                 default:
                     break;
+
             }
         }
     }];
@@ -101,7 +110,7 @@
 
     NSMutableDictionary *segmentPostBodyDict = [[NSMutableDictionary alloc]init];
     [segmentPostBodyDict setObject:segment.text forKey:@"postBody"];
-    //[segmentPostBodyDict setObject:[userDefaults stringForKey:@"username"] forKey:@"author"];
+    [segmentPostBodyDict setObject:[userDefaults objectForKey:@"username"] forKey:@"author"];
     [segmentPostBodyDict setObject:segment.storyName forKey:@"storyName"];
 //    [segmentPostBodyDict setOb:  segment.levelId forKey:@"levelId"];
     [segmentPostBodyDict setObject:[NSString stringWithFormat:@"%d", segment.levelId] forKey:@"levelId"];

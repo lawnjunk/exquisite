@@ -13,7 +13,7 @@
 @interface NetworkController : NSObject
 
 +(id)sharedService;
--(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location;
+-(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location ;
 
 -(void)fetchRandomStoryWithCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
 -(void)fetchStoryWithIdentifier:(NSString * )storyID withCompletionHandler: (void (^)(NSDictionary *results, NSString *error)) completionHandler;
