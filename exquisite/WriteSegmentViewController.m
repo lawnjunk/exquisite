@@ -30,7 +30,7 @@
     NSString *defaultsUsername = [userDefaults objectForKey:@"username"];
     if (!defaultsUsername){
         NSLog(@"there was no username in userdfaults");
-        [self.networkController createNewAccountWithUserName:@"hawtie" password:@"password" email:@"hawtie@slugz.website" location:@"hereOrThere" ];
+        [self.networkController createNewAccountWithUserName:@"b" password:@"password" email:@"b" location:@"hereOrThere" ];
         self.username = [userDefaults objectForKey:@"username"];
     } else {
         NSLog(@"self.username is %@", self.username);

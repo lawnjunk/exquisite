@@ -43,7 +43,7 @@
   
   [self.networkController fetchTimelineForUser:self.currentUser withCompletionHandler:^(NSDictionary *results, NSString *error) {
     NSLog(@"The New Fetch Worked");
-    NSLog(@"Results For user timeline fetch: %@", results);
+//    NSLog(@"Results For user timeline fetch: %@", results);
     
     NSMutableArray *allStorySegments = [[NSMutableArray alloc] init];
     NSDictionary *userDictionary = results[@"user"];

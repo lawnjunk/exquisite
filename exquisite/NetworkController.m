@@ -73,7 +73,7 @@
     NSData *postData = [NSJSONSerialization dataWithJSONObject:createUserPostBodyDict options:0 error:&error];
     [request setHTTPBody:postData];
     [request addValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    
+//    [request addValue:@"eat" forHTTPHeaderField:<#(NSString *)#>]
     
     NSLog(@"about to make anew user");
     NSURLSession *session = [NSURLSession sharedSession];
@@ -86,10 +86,22 @@
             NSInteger statusCode = httpResponse.statusCode;
             
             NSLog(@"status code for createing the user %lu", statusCode);
+            NSLog(@"create user httpRespnce body : %@", httpResponse.description);
             switch (statusCode) {
                 case 200 ... 299: {
                     NSLog(@"statuscode for create user was %ld", (long)statusCode);
 
+                    NSError *parseError;
+                    NSDictionary *tokenDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+                    
+                    if (tokenDictionary) {
+                        
+                        NSString *token = [tokenDictionary objectForKey:@"eat"];
+                        NSLog(@"we got a token for user %@, the token is \n%@", username, token);
+                        [userDefaults setObject:token forKey:@"token"];
+
+                    }
+                    
                     [userDefaults setObject:username forKey:@"username"];
                     [userDefaults synchronize];
                     break;
@@ -132,6 +144,8 @@
     
     [request setHTTPBody:postSegmentData];
     [request addValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    NSString *eatToken = [userDefaults objectForKey:@"token"];
+    [request addValue:eatToken forHTTPHeaderField:@"eat"];
     
     NSURLSession *session = [NSURLSession sharedSession];
     
