@@ -26,24 +26,36 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setObject:@"booger" forKey:@"username"];
+//    [userDefaults setObject:@"dug" forKey:@"username"];
+    [userDefaults synchronize];
     NSString *defaultsUsername = [userDefaults objectForKey:@"username"];
     if (!defaultsUsername){
         NSLog(@"there was no username in userdfaults");
-        [self.networkController createNewAccountWithUserName:@"b" password:@"password" email:@"b" location:@"hereOrThere" ];
-        self.username = [userDefaults objectForKey:@"username"];
+//        [self.networkController createNewAccountWithUserName:@"grumbler" password:@"password" email:@"grumbler@slug.website" location:@"hereOrThere"  withCompletionHandler:^(NSString *token) {
+//            [userDefaults setObject:token forKey:@"username"];
+//        };
+//        self.username = [userDefaults objectForKey:@"username"];
+        
+        [self.networkController createNewAccountWithUserName:@"farrrt" password:@"password" email:@"nudedmyapp@sadfadfas()" location:@"nunyah" withCompletionHandler:^(NSString *token, NSString *username) {
+            NSLog(@"in the collback we get the username %@", username);
+            [userDefaults setObject:token forKey:@"token"];
+            [userDefaults synchronize];
+            self.username = username;
+        }];
     } else {
         NSLog(@"self.username is %@", self.username);
         self.username = defaultsUsername;
     }
+    
+    
 
     
 //    [self.networkController fetchStoryWithIdentifier:@"this should get changed" withCompletionHandler:^(NSDictionary *results, NSString *error) {
         [self.networkController fetchRandomStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 
-        NSLog(@"%@ thesse results", results);
+        NSLog(@"%@ this is my username", self.username);
         
-        
+        NSLog(results.description);
         self.currentStory = [[Story alloc] initWithJSONData:results];
         self.lastSegment = [self.currentStory getLastSegment];
         NSLog(@"last seg text: %@", self.lastSegment.text);
@@ -67,10 +79,10 @@
     self.networkController = [NetworkController sharedService];
     
 
-    if (self.username == nil){
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        self.username = [userDefaults objectForKey:@"username"];
-    }
+//    if (self.username == nil){
+//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//        self.username = [userDefaults objectForKey:@"username"];
+//    }
 
 
     
@@ -84,7 +96,7 @@
 
     
     
-    self.username = @"booger";
+//    self.username = @"booger";
 //    [self.networkController fetchStoryWithIdentifier:@"LDFKSDLFJ" withCompletionHandler:^(NSDictionary *results, NSString *error) {
 //    [self.networkController fetchStoryWithCompletionHandler:^(NSDictionary *results, NSString *error) {
 
@@ -123,7 +135,8 @@
     NSString *segmentText = [ NSString stringWithFormat: @"%@ ", trimmedString];
     
     
-    [newSegDictionary setObject:[NSNumber numberWithInt:2] forKey:@"levelId"];
+//    [newSegDictionary setObject:[NSNumber numberWithInt:2] forKey:@"levelId"];
+    NSLog(@"my username prop immediatly b4 the postdict set: %@", self.username);
     [newSegDictionary setObject:self.username forKey:@"author"];
     [newSegDictionary setObject:segmentText forKey:@"postBody"];
     
@@ -141,7 +154,8 @@
 //    [self.networkController postSegment:newSeg];
     [self.currentStory addSegment:newSeg];
     NSLog(@"previous post was layer %ld, this one is layer %ld", self.currentStory.levels.count, [self.currentStory getLastSegment].levelId);
-    [self.networkController postSegment:self.currentStory.getLastSegment];
+//    [self.networkController postSegment:self.currentStory.getLastSegment];
+    [self.networkController postSegment:self.currentStory.getLastSegment withUserName:self.username];
     [self performSegueWithIdentifier:@"SHOW_READ_FROM_WRITE" sender:self];
 }
 

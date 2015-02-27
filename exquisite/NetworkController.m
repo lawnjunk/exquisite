@@ -57,8 +57,8 @@
 //-(void)createNewAccountWithUserName:(NSString *)username password:(NSString *)passwd email:(NSString *)email location:(NSString *)location withCompletionHandler:(void (^)(NSString *))completionHandler {
 
 
--(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location {
-
+//-(void)createNewAccountWithUserName:(NSString *) username password:(NSString *)passwd email:(NSString *)email location:(NSString*) location {
+-(void)createNewAccountWithUserName:(NSString *)username password:(NSString *)passwd email:(NSString *)email location:(NSString *)location withCompletionHandler:(void (^)(NSString *token, NSString *username))completionHandler {
     NSMutableDictionary *createUserPostBodyDict = [[NSMutableDictionary alloc] init];
     [createUserPostBodyDict setObject:username forKey:@"screenname"];
     [createUserPostBodyDict setObject:email forKey:@"email"];
@@ -94,16 +94,23 @@
                     NSError *parseError;
                     NSDictionary *tokenDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
                     
-                    if (tokenDictionary) {
-                        
-                        NSString *token = [tokenDictionary objectForKey:@"eat"];
-                        NSLog(@"we got a token for user %@, the token is \n%@", username, token);
-                        [userDefaults setObject:token forKey:@"token"];
-
-                    }
+                    NSString *token = [tokenDictionary objectForKey:@"eat"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"welcome");
+                        completionHandler(token, username);
+                    });
                     
-                    [userDefaults setObject:username forKey:@"username"];
-                    [userDefaults synchronize];
+                    
+//                    if (tokenDictionary) {
+//                        
+//                        
+//                        NSLog(@"we got a token for user %@, the token is \n%@", username, token);
+//                        [userDefaults setObject:token forKey:@"token"];
+//
+//                    }
+//                    
+//                    [userDefaults setObject:username forKey:@"username"];
+//                    [userDefaults synchronize];
                     break;
                 }
                 default:
@@ -116,13 +123,15 @@
 }
 
 
--(void)postSegment:(Segment *)segment{
+-(void)postSegment:(Segment *)segment withUserName:(NSString * )username {
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
     NSMutableDictionary *segmentPostBodyDict = [[NSMutableDictionary alloc]init];
     [segmentPostBodyDict setObject:segment.text forKey:@"postBody"];
-    [segmentPostBodyDict setObject:[userDefaults objectForKey:@"username"] forKey:@"author"];
+    NSString *usernameFromDefatuls = [userDefaults objectForKey:@"username"];
+    NSLog(@"inside post segment usernameFromDefautls = %@", usernameFromDefatuls);
+    [segmentPostBodyDict setObject:@"garbal" forKey:@"author"];
     [segmentPostBodyDict setObject:segment.storyName forKey:@"storyName"];
 //    [segmentPostBodyDict setOb:  segment.levelId forKey:@"levelId"];
     [segmentPostBodyDict setObject:[NSString stringWithFormat:@"%d", segment.levelId] forKey:@"levelId"];
@@ -314,7 +323,9 @@
   NSString *userName = currentUser.userName;
 
 //  NSString *urlString = [NSString stringWithFormat:@"%@/user/%@", self.serverURLString, @"booger"];
-  NSString *urlString = @"http://exquisite-prose.herokuapp.com/user/booger";
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [userDefaults objectForKey:@"username"];
+  NSString *urlString = [NSString stringWithFormat: @"http://exquisite-prose.herokuapp.com/user/%@", username ];
     NSLog(@"request string %@", urlString);
   //  urlString = [urlString stringByAppendingString:@"search?order=desc&sort=activity&site=stackoverflow&intitle="];
   //  urlString = [urlString stringByAppendingString:searchTerm];
@@ -347,7 +358,7 @@
           NSError *parseError;
           NSDictionary *storyDictionary = [ NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
           
-          NSLog(@"fetch booger results %@", httpResponse.description);
+          NSLog(@"fetch user timline results %@", httpResponse.description);
           
 //#warning Temporary fix to a sudden endpoint change
           NSDictionary *tempDick = storyDictionary[@"user"];
